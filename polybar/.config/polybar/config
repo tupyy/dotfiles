@@ -25,6 +25,7 @@ foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
+active-term=#005faf
 alert = #bd2c40
 
 ;------------------------------------
@@ -221,7 +222,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-underline= ${colors.active-term}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
