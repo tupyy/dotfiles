@@ -10,6 +10,7 @@ function! s:StartDebugging()
     let s:jdt_ls_debugger_port = youcompleteme#GetCommandResponse(
       \ 'ExecuteCommand',
       \ 'vscode.java.startDebugSession' )
+    echom "Got port" s:jdt_ls_debugger_port
 
     if s:jdt_ls_debugger_port == ''
        echom "Unable to get DAP port - is JDT.LS initialized?"
@@ -18,8 +19,10 @@ function! s:StartDebugging()
      endif
   endif
 
+  echom "Using port" s:jdt_ls_debugger_port
+
   " Start debugging with the DAP port
   call vimspector#LaunchWithSettings( { 'DAPPort': s:jdt_ls_debugger_port } )
 endfunction
 
-nnoremap <silent> <buffer> <Leader><F6> :call <SID>StartDebugging()<CR>
+nnoremap <Leader><F6> :call <SID>StartDebugging()<CR>
