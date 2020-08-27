@@ -220,5 +220,5 @@ bindsym $mod+o [class="Spotify"] scratchpad show
 for_window [class="Spotify"] move scratchpad
 for_window [class="Spotify"] resize set 1200 800
 
-# remove border from urxvt
-default_border pixel 1
+for_window [class="^.*"] border pixel 2
+gaps inner 4
