@@ -230,5 +230,8 @@ bindsym $mod+o [class="Spotify"] scratchpad show
 for_window [class="Spotify"] move scratchpad
 for_window [class="Spotify"] resize set 1200 800
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
 gaps inner 4
+
+for_window [class="Conky"] floating enable
+

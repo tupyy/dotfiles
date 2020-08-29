@@ -1,0 +1,50 @@
+# avoid flicker
+double_buffer yes
+
+# window
+own_window yes
+own_window_transparent yes
+own_window_type override
+own_window_class Conky
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+#own_window_hints above
+background yes
+
+# position
+alignment top_left
+gap_x 0
+gap_y 100
+
+# borders
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no 
+
+# font
+use_xft yes
+xftfont Delicious:bold:size=9
+xftalpha 0.5
+
+# colours
+default_color 1994d1
+own_window_colour 282828
+default_shade_color white
+default_outline_color white
+
+# Various Settings
+net_avg_samples 2
+override_utf8_locale yes
+use_spacer no
+minimum_size 1280 0
+update_interval 1
+total_run_times 0
+
+TEXT
+${voffset -1}${alignc} ${color}Core0: ${color white}${cpu cpu1}% | ${color}Core1: ${color white}${cpu cpu2}% | ${color}RAM: ${color white}${mem} | ${color}Root: ${color white}${fs_free /} | ${color}Home: ${color white}${fs_free /home} | ${color}Down: ${color white}${downspeedf eth0}k/s | ${color}Up: ${color white}${upspeedf eth0}k/s 
+
+# Show connections
+${color Tan2}ESTABLISHED Connections${color DarkSlateGray}${hr 2}
+${offset 10}${color lightgrey}Inbound: ${color white}${tcp_portmon 1 32767 count}    ${color lightgrey}Outbound: ${color white}${tcp_portmon 32768 61000 count}${alignr}${color lightgrey}Total: ${color white}${tcp_portmon 1 65535 count}
+${color slate grey}Process                 ${color slate grey}Remote IP              ${color slate grey}L-Port ${alignr}${color slate grey}R-Port${color lightgrey}
+${font Ubuntu Mono:size=10}${texeci 30 netstat -anpt | grep 'ESTABLISHED' | sed -r 's|.*192.[0-9.]+:([0-9]*)\s*([0-9.]+):([0-9]+)[^/]+/([a-zA-Z0-9]*)|\4 \2 \1 \3|' | awk '{printf("%-14s %-15s %5s %5s\n",$1,$2,$3,$4)}'}
