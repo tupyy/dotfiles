@@ -31,15 +31,15 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Development
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale'
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'valloric/MatchTagAlways'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'pangloss/vim-javascript'
+"Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sebdah/vim-delve'
 Plug 'fatih/vim-go'
 
