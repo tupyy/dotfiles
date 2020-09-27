@@ -1,6 +1,7 @@
 source ~/.config/vim/plugin/ale.vim
 source ~/.config/vim/plugin/ycm.vim
 source ~/.config/vim/plugin/vimspector.vim
+source ~/.config/vim/plugin/aws-vim.vim
 
 call plug#begin()
 
@@ -13,6 +14,7 @@ Plug 'morhetz/gruvbox'
 
 " Development
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/m-kat/aws-vim'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'

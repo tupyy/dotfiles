@@ -31,3 +31,6 @@ nmap <C-Right> <C-W><C-L>
 nmap <C-Left> <C-W><C-H>
 nmap <C-Up> <C-W><C-K>
 
+" resize vsplit by +-5columns
+nmap <silent> <Leader>+ :vertical resize +5<CR>
+nmap <silent> <Leader>- :vertical resize -5<CR>
