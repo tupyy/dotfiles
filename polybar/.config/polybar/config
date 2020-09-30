@@ -125,7 +125,7 @@ font-6 = "Font Awesome 5 Brands:style=Solid:pixelsize=8;1"
 
 modules-left = i3 
 modules-center = spotify previous playpause next
-modules-right = pulseaudio eth memory cpu date time-singapore 
+modules-right = pulseaudio eth memory cpu date time-utc time-singapore 
 
 tray-position = right
 tray-padding = 2
@@ -294,6 +294,11 @@ label = %date% %time%
 [module/time-singapore]
 type = custom/script
 exec = TZ=Asia/Singapore date +"Singapore: %H:%M"
+interval=30
+
+[module/time-utc]
+type = custom/script
+exec = TZ=UTC date +"UTC: %H:%M"
 interval=30
 
 [module/pulseaudio]
