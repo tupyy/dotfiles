@@ -26,6 +26,10 @@ vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 " NerdTree
 nmap <C-n> :NERDTreeToggle %<CR>
 
+"Coc-Explorer
+map <leader>e :CocCommand explorer<CR>
+
+
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
 

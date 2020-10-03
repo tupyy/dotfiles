@@ -1,9 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
-"   Hamza Memon
-"
-" Version:
-"   2.0 - 5/7/20
+"   Cosmin Tupangiu
 "
 " Sections:
 "   -> General
