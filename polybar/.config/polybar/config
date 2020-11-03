@@ -64,7 +64,8 @@ font-1 = Lato:style=Regular:size=10
 font-2 = Lato:style=Regular:size=13
 
 modules-left = i3
-modules-right = pulseaudio date
+modules-center = date
+modules-right = pulseaudio
 
 tray-position = right
 tray-padding = 2

@@ -13,11 +13,14 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+shopt -s histappend direxpand
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+
+HISTTIMEFORMAT="[%F %T] "
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -137,6 +140,16 @@ fi
 if [ -f "$HOME/.aws_functions" ]; then
     . $HOME/.aws_functions
 fi
+
+if [ -f "$HOME/.bash_functions" ]; then
+    . $HOME/.bash_functions
+fi
+
+# Load bashmarks
+if [ -f "$HOME/.config/bashmarks/bashmarks.plugin.sh" ]; then
+    . $HOME/.config/bashmarks/bashmarks.plugin.sh
+fi
+
 
 # Reload gpg-agent to force asking for password
 gpg-reload() {

@@ -19,6 +19,7 @@ font pango:monospace 10
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+exec --no-startup-id i3-workscreen
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -213,22 +214,22 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
-
 # Show the first scratchpad window
 bindsym $mod+u [instance="__scratchpad"] scratchpad show; [instance="__scratchpad"] move position center
 for_window [instance="__scratchpad"] move scratchpad 
+for_window [instance="__scratchpad"] resize set 1600 1000
 exec --no-startup-id urxvt -name "__scratchpad" -pe tabbed
 
 #file manager
-bindsym $mod+a [instance="vifm"] scratchpad show
+bindsym $mod+a [instance="vifm"] scratchpad show; [instance="vifm"] move position center
 exec --no-startup-id urxvt -name "vifm" -e vifm
 for_window [instance="vifm"] move scratchpad
-for_window [instance="vifm"] resize set 1200 800
+for_window [instance="vifm"] resize set 1600 1000
 
 # spotify
-bindsym $mod+o [class="Spotify"] scratchpad show
+bindsym $mod+o [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 for_window [class="Spotify"] move scratchpad
-for_window [class="Spotify"] resize set 1200 800
+for_window [class="Spotify"] resize set 1600 1000
 
 for_window [class="^.*"] border pixel 1
 gaps inner 4

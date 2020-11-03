@@ -61,7 +61,7 @@ set foldenable
 set foldlevelstart=10
 set foldmethod=syntax
 set foldopen-=block
-set foldcolumn=1
+set foldcolumn=0
 
 " We don't need to see things like -- INSERT -- anymore
 set noshowmode
@@ -78,7 +78,7 @@ set showtabline=4
 set nowrap
 
 " Keep cursor in middle of screen
-set scrolloff=999
+"set scrolloff=999
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

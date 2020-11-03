@@ -47,17 +47,20 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 
 " Miscellaneous
+Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/csv.vim'
 Plug 'mbbill/undotree'
 Plug 'vim-utils/vim-man'
 Plug 'christoomey/vim-system-copy'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ap/vim-buftabline'
 Plug 'prettier/vim-prettier', { 'do': 'npm  install' }
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-commentary'
+Plug 'kshenoy/vim-signature'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

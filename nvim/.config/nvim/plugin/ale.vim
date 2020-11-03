@@ -83,3 +83,7 @@ let g:ale_sign_warning = ''
 
 " Automatically determine flags to be set for compilers
 let g:ale_c_parse_makefile = 1
+
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
