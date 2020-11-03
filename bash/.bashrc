@@ -161,10 +161,6 @@ gpg-reload() {
  }
 
 
-copy2UAT() {
-    scp -i ~/.ssh/keypair-a-wismet-uat.pem $1 ec2-user@wismet-uat:/home/ec2-user
-}
-
 # source fzf functions
 [[ -n "$HOME/.utils/fzf_functions.sh" ]] && source "$HOME/.utils/fzf_functions.sh"
 
@@ -177,13 +173,3 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{n
 vremea() {
     curl -s "wttr.in"
 }
-
-
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
-
-eval "$(fasd --init auto)"

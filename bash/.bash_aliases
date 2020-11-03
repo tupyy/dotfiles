@@ -8,20 +8,12 @@ alias night-colors="qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"
 # vim
 alias edit-vimrc="vim $HOME/.vimrc"
 
-# Spring boot debug
-alias debug-spring-boot="mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=7000\""
-
 # delete vim swap files
 alias rmswp="find . -type f -name \"*.sw[klmnop]\" -delete"
 
 #aws cli
 alias describe-instances="aws ec2 describe-instances --filter Name=tag:Name,Values=openwis* --query 'Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value|[0], InstanceId, State.Name, NetworkInterfaces[0].PrivateIpAddress, PublicIpAddress, SubnetId]' --output table"
 alias describe-addresses="aws ec2 describe-addresses --query \"Addresses[*].[Tags[?Key=='Name'].Value|[0],PublicIp, AllocationId,InstanceId]\" --output table"
-
-# various
-alias lzl="lazylogger --config /home/cosmin/logger.yaml"
-alias netstat-listen="grc netstat -nlpt"
-alias gps="grc aux"
 
 # load all my keys
 alias load-keys="find ~/.ssh ! -name \"*pub\" ! -name \"known*\" -type f -exec ssh-add {} \\;"
@@ -30,3 +22,9 @@ alias load-keys="find ~/.ssh ! -name \"*pub\" ! -name \"known*\" -type f -exec s
 alias spp="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 alias sn="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 alias sp="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+# Openwis
+alias logf="tail -f logs/openwis.log"
+alias catalinaf="tail -f /opt/openwis/tomcat/logs/catalina.out"
+alias openwis_psqsl="psql -h openwis-db-1.cxaczg5nxvqg.eu-west-3.rds.amazonaws.com -p 5432 OpenWIS openwis"
+

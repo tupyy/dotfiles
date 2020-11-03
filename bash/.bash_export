@@ -1,0 +1,7 @@
+export GOPATH=$HOME/go
+export GO111MODULE=on
+export JAVA_HOME=/usr/lib/jvm/java
+export PATH=$PATH:/opt/apache-maven-3.6.3/bin
+
+# set editor to vim
+export EDITOR=/usr/bin/vim

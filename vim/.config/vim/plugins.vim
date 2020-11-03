@@ -1,6 +1,5 @@
 source ~/.config/vim/plugin/ale.vim
 source ~/.config/vim/plugin/ycm.vim
-source ~/.config/vim/plugin/vimspector.vim
 source ~/.config/vim/plugin/aws-vim.vim
 
 call plug#begin()
@@ -46,5 +45,3 @@ Plug 'preservim/nerdtree'
 
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
-
-packadd! vimspector
