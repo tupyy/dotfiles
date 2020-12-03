@@ -217,22 +217,17 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
 bindsym $mod+u [instance="__scratchpad"] scratchpad show; [instance="__scratchpad"] move position center
 for_window [instance="__scratchpad"] move scratchpad 
-for_window [instance="__scratchpad"] resize set 1600 1000
+for_window [instance="__scratchpad"] resize set 1200 800
 exec --no-startup-id urxvt -name "__scratchpad" -pe tabbed
 
 #file manager
 bindsym $mod+a [instance="vifm"] scratchpad show; [instance="vifm"] move position center
 exec --no-startup-id urxvt -name "vifm" -e vifm
 for_window [instance="vifm"] move scratchpad
-for_window [instance="vifm"] resize set 1600 1000
-
-# spotify
-bindsym $mod+o [class="Spotify"] scratchpad show; [class="Spotify"] move position center
-for_window [class="Spotify"] move scratchpad
-for_window [class="Spotify"] resize set 1600 1000
+for_window [instance="vifm"] resize set 1200 800
 
 for_window [class="^.*"] border pixel 1
-gaps inner 4
+#gaps inner 4
 
 for_window [class="Conky"] floating enable
 
