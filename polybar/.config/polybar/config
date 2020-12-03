@@ -92,7 +92,7 @@ cursor-scroll = ns-resize
 ;
 ;----------------------------------------
 [bar/monitor-right]
-monitor = "HDMI-0"
+monitor = "Virtual1"
 width = 100%
 height = 27 
 ;offset-x = 1%
@@ -125,8 +125,8 @@ font-5 = "Font Awesome 5 Brands:style=Regular:pixelsize=8;1"
 font-6 = "Font Awesome 5 Brands:style=Solid:pixelsize=8;1"
 
 modules-left = i3 
-modules-center = spotify previous playpause next
-modules-right = pulseaudio eth memory cpu date time-utc time-singapore 
+modules-center = date
+modules-right = eth temperature memory cpu time-utc 
 
 tray-position = right
 tray-padding = 2
@@ -260,9 +260,37 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
 
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run 
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+; Base temperature for where to start the ramp (in degrees celsius)
+; Default: 0
+base-temperature = 20
+
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 60
+
 [module/eth]
 type = internal/network
-interface = enp2s0 
+interface = enp0s3 
 interval = 3.0
 
 format-connected-underline = #55aa55
