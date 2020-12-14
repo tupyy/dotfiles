@@ -32,7 +32,7 @@ alert = #bd2c40
 ;
 ;           MONITOR LEFT
 ;
--------------------------------------
+;-------------------------------------
 [bar/monitor-left]
 monitor="DVI-0"
 
@@ -91,7 +91,7 @@ cursor-scroll = ns-resize
 ;       MONITOR RIGHT
 ;
 ;----------------------------------------
-[bar/monitor-right]
+[bar/monitor-virtual]
 monitor = "Virtual1"
 width = 100%
 height = 27 
@@ -250,7 +250,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-underline = #f90000
-label = %percentage:2%%
+label = %percentage-cores%
 
 [module/memory]
 type = internal/memory
