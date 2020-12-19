@@ -41,10 +41,10 @@
 URxvt.termName: xterm-256color
 
 !! URxvt Appearance
-URxvt.font: xft:JetBrainsMono Nerd Font:style=Regular:size=12
-URxvt.boldFont: xft:JetBrainsMono Nerd Font:style=Bold:size=12
-URxvt.italicFont: xft:JetBrainsMono Nerd Font:style=Italic:size=12
-URxvt.boldItalicfont: xft:JetBrainsMono Nerd Font:style=Bold Italic:size=12
+URxvt.font: xft:JetBrainsMono Nerd Font:style=Regular:size=10
+URxvt.boldFont: xft:JetBrainsMono Nerd Font:style=Bold:size=10
+URxvt.italicFont: xft:JetBrainsMono Nerd Font:style=Italic:size=10
+URxvt.boldItalicfont: xft:JetBrainsMono Nerd Font:style=Bold Italic:size=10
 
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
