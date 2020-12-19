@@ -126,7 +126,7 @@ font-6 = "Font Awesome 5 Brands:style=Solid:pixelsize=8;1"
 
 modules-left = i3 
 modules-center = date
-modules-right = eth temperature memory cpu time-utc 
+modules-right = eth temperature memory cpu time-ro 
 
 tray-position = right
 tray-padding = 2
@@ -320,14 +320,9 @@ format-underline = #0a6cf5
 
 label = %date% %time%
 
-[module/time-singapore]
+[module/time-ro]
 type = custom/script
-exec = TZ=Asia/Singapore date +"Singapore: %H:%M"
-interval=30
-
-[module/time-utc]
-type = custom/script
-exec = TZ=UTC date +"UTC: %H:%M"
+exec = TZ=Europe/Bucharest date +"Ro: %H:%M"
 interval=30
 
 [module/pulseaudio]
