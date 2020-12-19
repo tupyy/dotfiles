@@ -39,6 +39,7 @@ Plug 'valloric/MatchTagAlways'
 "Plug 'pangloss/vim-javascript'
 "Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sebdah/vim-delve'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'fatih/vim-go'
 
 " Easier jumping around/editing
