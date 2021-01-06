@@ -18,6 +18,9 @@
 " Filetype on
 filetype on
 
+" Use spaces instead of tabs
+set expandtab
+
 " Automatically save before commands like :next
 set autowrite
 
@@ -65,9 +68,6 @@ set foldcolumn=0
 
 " We don't need to see things like -- INSERT -- anymore
 set noshowmode
-
-" Use spaces instead of tabs
-set expandtab
 
 " 1 tab = 2 spaces
 set shiftwidth=4

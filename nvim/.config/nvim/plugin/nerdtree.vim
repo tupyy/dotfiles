@@ -35,6 +35,8 @@ let NERDTreeAutoDeleteBuffer = 1
 " Turn on Git status with flags
 let g:NERDTreeGitStatusWithFlags = 1
 
+let g:NERDTreeChDirMode = 1
+
 " Highlight file names
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -77,4 +79,4 @@ let s:git_orange = 'F54D27'
 "autocmd VimEnter * if argc() == 1 | NERDTreeToggle % | wincmd p | endif
 
 " Automatically close Vim if NERDTree is the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

@@ -226,6 +226,12 @@ exec --no-startup-id urxvt -name "vifm" -e vifm
 for_window [instance="vifm"] move scratchpad
 for_window [instance="vifm"] resize set 1200 800
 
+#slack
+bindsym $mod+i [instance="slack"] scratchpad show; [instance="slack"] move position center
+exec --no-startup-id urxvt -name "slack" -e slack
+for_window [instance="slack"] move scratchpad
+for_window [instance="slack"] resize set 1400 1000
+
 for_window [class="^.*"] border pixel 1
 #gaps inner 4
 

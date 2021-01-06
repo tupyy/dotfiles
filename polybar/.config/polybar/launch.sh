@@ -11,7 +11,7 @@ fi
 # polybar-msg cmd quit
 
 # Launch bar1 and bar2
-#polybar monitor-left >>$HOME/tmp/polybar-monitor-left.log 2>&1 &
+polybar monitor-left >>$HOME/tmp/polybar-monitor-left.log 2>&1 &
 polybar monitor-virtual >>$HOME/tmp/polybar-monitor.log 2>&1 &
 
 echo "Bars launched..."

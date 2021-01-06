@@ -23,12 +23,12 @@ nmap <silent> <Esc>k mz:m-2<CR>`z
 vmap <silent> <Esc>j :m'>+<cr>`<my`>mzgv`yo`z
 vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 
-" NerdTree
-nmap <C-n> :NERDTreeToggle %<CR>
+" Fern
+nmap <C-n> :Fern . -drawer -toggle<CR>
+nmap <leader>e <Plug>(fern-action-expand:in)
 
-"Coc-Explorer
-map <leader>e :CocCommand explorer<CR>
-
+" Tagbar
+nmap <leader>t :TagbarToggle<CR>
 
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
