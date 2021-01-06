@@ -34,7 +34,7 @@ alert = #bd2c40
 ;
 ;-------------------------------------
 [bar/monitor-left]
-monitor="DVI-0"
+monitor="Virtual2"
 
 width = 100%
 height = 27 

@@ -26,10 +26,11 @@ Plug 'junegunn/gv.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'lambdalisue/fern.vim'
+Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
 "Plug 'HerringtonDarkholme/yats.vim'
 Plug 'lervag/vimtex'
 "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
@@ -67,3 +68,5 @@ Plug 'ryanoasis/vim-devicons'
 " => End Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#end()
+
+source ~/.config/nvim/plugin/tagbar.vim
