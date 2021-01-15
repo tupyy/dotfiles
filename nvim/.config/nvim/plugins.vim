@@ -31,16 +31,14 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'neovim/nvim-lspconfig'
 Plug 'lervag/vimtex'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'valloric/MatchTagAlways'
-"Plug 'pangloss/vim-javascript'
-"Plug 'maxmellon/vim-jsx-pretty'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'stephpy/vim-yaml'
 "Plug 'fatih/vim-go'
 
 " Easier jumping around/editing
@@ -48,12 +46,13 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 
 " Miscellaneous
+Plug 'xavierchow/vim-swagger-preview'
 Plug 'junegunn/vim-peekaboo'
 Plug 'chrisbra/csv.vim'
 Plug 'mbbill/undotree'
 Plug 'vim-utils/vim-man'
 Plug 'christoomey/vim-system-copy'
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
