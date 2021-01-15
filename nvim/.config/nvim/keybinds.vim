@@ -25,7 +25,10 @@ vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Fern
 nmap <C-n> :Fern . -drawer -toggle<CR>
-nmap <leader>e <Plug>(fern-action-expand:in)
+
+" LSP
+nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
+nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
