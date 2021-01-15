@@ -64,8 +64,8 @@ font-1 = Lato:style=Regular:size=10
 font-2 = Lato:style=Regular:size=13
 
 modules-left = i3
-modules-center = date
-modules-right = pulseaudio
+modules-center = date 
+modules-right = stock stockAIR
 
 tray-position = right
 tray-padding = 2
@@ -126,7 +126,7 @@ font-6 = "Font Awesome 5 Brands:style=Solid:pixelsize=8;1"
 
 modules-left = i3 
 modules-center = date
-modules-right = eth temperature memory cpu time-ro 
+modules-right = eth temperature memory cpu 
 
 tray-position = right
 tray-padding = 2
@@ -436,6 +436,34 @@ line-size = 1
 type = custom/text
 content = "view weather"
 click-left = sh ~/.config/polybar/scripts/wttr.sh
+
+[module/stock]
+type=custom/script
+; Available tags:
+;   <output> - deprecated
+;   <label> (default)
+exec = ~/.config/polybar/scripts/stock.sh RNO
+format = <label>
+
+; Available tokens:
+;   %output%
+; Default: %output%
+label = RNO: %output:0:25:...%
+interval = 2
+
+[module/stockAIR]
+type=custom/script
+; Available tags:
+;   <output> - deprecated
+;   <label> (default)
+exec = ~/.config/polybar/scripts/stock.sh AIR
+format = <label>
+
+; Available tokens:
+;   %output%
+; Default: %output%
+label = AIR: %output:0:25:...%
+interval = 2
 
 [settings]
 screenchange-reload = true
