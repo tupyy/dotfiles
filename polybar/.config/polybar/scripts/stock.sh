@@ -29,7 +29,7 @@ else
 fi
 
 
-echo -e "${fmtValue} ${var}"
+echo -e "$1: ${fmtValue} ${var}"
 
 
 

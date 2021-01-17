@@ -448,7 +448,7 @@ format = <label>
 ; Available tokens:
 ;   %output%
 ; Default: %output%
-label = RNO: %output:0:25:...%
+label = %output:0:30:...%
 interval = 2
 
 [module/stockAIR]
@@ -456,13 +456,13 @@ type=custom/script
 ; Available tags:
 ;   <output> - deprecated
 ;   <label> (default)
-exec = ~/.config/polybar/scripts/stock.sh AIR
+exec = ~/.config/polybar/scripts/stock.sh AF
 format = <label>
 
 ; Available tokens:
 ;   %output%
 ; Default: %output%
-label = AIR: %output:0:25:...%
+label = %output:0:30:...%
 interval = 2
 
 [settings]
