@@ -30,8 +30,9 @@ Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 Plug 'lervag/vimtex'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -39,7 +40,7 @@ Plug 'valloric/MatchTagAlways'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'stephpy/vim-yaml'
-"Plug 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
@@ -69,3 +70,4 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 source ~/.config/nvim/plugin/tagbar.vim
+source ~/.config/nvim/plugin/neo-completion.vim

@@ -138,9 +138,20 @@ colorscheme gruvbox
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
+local lsp_completion = require("completion")
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  --Enable completion
+ local capabilities = vim.lsp.protocol.make_client_capabilities()
+ capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+  if client.resolved_capabilities.completion then
+    lsp_completion.on_attach(client, bufnr)
+  end
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
