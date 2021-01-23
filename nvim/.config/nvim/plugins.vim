@@ -30,7 +30,6 @@ Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lervag/vimtex'
@@ -71,3 +70,4 @@ call plug#end()
 
 source ~/.config/nvim/plugin/tagbar.vim
 source ~/.config/nvim/plugin/neo-completion.vim
+source ~/.config/nvim/plugin/vim-go.vim
