@@ -25,6 +25,7 @@ vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Fern
 nmap <C-n> :Fern . -drawer -toggle<CR>
+nmap <C-h> :Files<CR>
 
 " LSP
 nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
