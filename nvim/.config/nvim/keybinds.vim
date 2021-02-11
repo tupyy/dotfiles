@@ -24,7 +24,7 @@ vmap <silent> <Esc>j :m'>+<cr>`<my`>mzgv`yo`z
 vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Fern
-nmap <C-n> :Fern . -drawer -toggle<CR>
+nmap <C-n> :Fern . -drawer -toggle -reveal=%<CR>
 nmap <C-h> :Files<CR>
 
 " LSP
@@ -76,3 +76,8 @@ nmap <F7> :DlvDebug<CR>
 imap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
 nmap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
 vmap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
+
+" F3 BufOnly
+imap <F3> <esc>:w<CR>:BufOnly!<CR>
+nmap <F3> <esc>:w<CR>:BufOnly!<CR>
+vmap <F3> <esc>:w<CR>:BufOnly!<CR>
