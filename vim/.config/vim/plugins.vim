@@ -22,6 +22,7 @@ Plug 'fatih/vim-go'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'dense-analysis/ale'
+Plug 'tpope/vim-dadbod'
 
 " Git
 Plug 'tpope/vim-fugitive'
