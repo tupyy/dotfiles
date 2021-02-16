@@ -27,6 +27,9 @@ vmap <silent> <Esc>k :m'<-2<cr>`>my`<mzgv`yo`z
 nmap <C-n> :Fern . -drawer -toggle -reveal=%<CR>
 nmap <C-h> :Files<CR>
 
+"float term
+nmap <leader>f :FloatermNew --height=0.8 --width=0.8 --wintype=float<CR>
+
 " LSP
 nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
 nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
