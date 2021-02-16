@@ -33,14 +33,18 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lervag/vimtex'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'valloric/MatchTagAlways'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
+
+"Snippets
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
@@ -61,6 +65,8 @@ Plug 'prettier/vim-prettier', { 'do': 'npm  install' }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'voldikss/vim-floaterm'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,3 +77,4 @@ call plug#end()
 source ~/.config/nvim/plugin/tagbar.vim
 source ~/.config/nvim/plugin/neo-completion.vim
 source ~/.config/nvim/plugin/vim-go.vim
+source ~/.config/nvim/plugin/ultisnips.vim
