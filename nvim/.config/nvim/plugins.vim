@@ -67,6 +67,7 @@ Plug 'tpope/vim-commentary'
 Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vista.vim'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
