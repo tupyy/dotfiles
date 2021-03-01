@@ -36,7 +36,6 @@ let g:airline_section_y = '%3l/%L'
 let g:airline_section_z = '%3v'
 
 let g:airline_extensions = [
-  \ 'ale',
   \ 'branch',
   \ 'coc',
   \ 'csv',

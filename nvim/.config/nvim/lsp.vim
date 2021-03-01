@@ -1,6 +1,8 @@
 lua << EOF
 local nvim_lsp = require('lspconfig')
+local configs = require'lspconfig/configs'
 local lsp_completion = require("completion")
+local util = require 'lspconfig/util'
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -44,8 +46,23 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "gopls", "rls" }
+local servers = { "gopls", "rls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+local server_name = "tsserver"
+local bin_name = "typescript-language-server"
+configs[server_name] = {
+  default_config = {
+    cmd = {bin_name, "--stdio"};
+    filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"};
+    root_dir = function(fname)
+      return util.root_pattern("tsconfig.json")(fname) or
+      util.root_pattern("package.json", "jsconfig.json", ".git")(fname);
+    end
+  };
+}
+nvim_lsp[server_name].setup{ on_attach = on_attach }
+
 EOF
