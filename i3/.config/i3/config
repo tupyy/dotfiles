@@ -231,3 +231,6 @@ for_window [class="^.*"] border pixel 1
 
 for_window [class="Conky"] floating enable
 
+# cycles focus
+exec_always --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --history 2
+bindsym $mod1+Tab exec --no-startup-id i3-cycle-focus.py --switch
