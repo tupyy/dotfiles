@@ -39,6 +39,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
+Plug 'puremourning/vimspector'
 
 "Snippets
 " Track the engine.
@@ -52,8 +53,9 @@ Plug 'preservim/nerdcommenter'
 
 " Miscellaneous
 Plug 'junegunn/vim-peekaboo'
+Plug 'henrik/vim-indexed-search'
 Plug 'chrisbra/csv.vim'
-Plug 'mbbill/undotree'
+"Plug 'mbbill/undotree'
 Plug 'vim-utils/vim-man'
 Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentLine'
@@ -80,3 +82,5 @@ source ~/.config/nvim/plugin/neo-completion.vim
 source ~/.config/nvim/plugin/vim-go.vim
 source ~/.config/nvim/plugin/ultisnips.vim
 source ~/.config/nvim/plugin/multi-cursor.vim
+
+let g:vimspector_enable_mappings='HUMAN'
