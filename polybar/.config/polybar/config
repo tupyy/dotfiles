@@ -126,7 +126,7 @@ font-6 = "Font Awesome 5 Brands:style=Solid:pixelsize=8;1"
 
 modules-left = i3 
 modules-center = date
-modules-right = eth temperature memory cpu 
+modules-right = eth temperature memory cpu filesystem
 
 tray-position = right
 tray-padding = 2
@@ -173,7 +173,7 @@ fixed-values = true
 
 ; Spacing between entries
 ; Default: 2
-spacing = 4
+spacing = 1
 
 ; Available tags:
 ;   <label-mounted> (default)
@@ -199,7 +199,7 @@ format-underline = #f90000
 label-mounted = %mountpoint%: %percentage_free%% 
 label-mounted-background = ${colors.background}
 label-mounted-foreground = ${colors.foreground}
-label-mounted-padding = 2
+label-mounted-padding = 0
 
 ; Available tokens:
 ;   %mountpoint%
