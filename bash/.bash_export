@@ -1,7 +1,18 @@
+#!/bin/bash
+
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export JAVA_HOME=/usr/lib/jvm/java
-export PATH=$PATH:/opt/apache-maven-3.6.3/bin
+export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin:/usr/local/go/bin
+export GITLAB_URI=https://code.tooling.prod.cdsf.io
 
 # set editor to vim
 export EDITOR=/usr/bin/vim
+
+#export http_proxy=http://10.0.2.15:3128
+#export https_proxy=http://10.0.2.15:3128
+#export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.99.0/24,192.168.39.0/24,192.168.49.0/24
+
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.9.11-9.fc33.x86_64"
+export KUBECONFIG=/home/cosmin/.kube/kubeconfig-ctp-admin
+
