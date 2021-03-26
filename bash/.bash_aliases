@@ -1,30 +1,43 @@
-# Git
-alias git-log="git log --graph --pretty=oneline --abbrev-commit"
-alias git-commit="git commit --all"
-alias git-branch="git branch -vv"
-alias git-tracked-files="git ls-files -t"
-alias night-colors="qdbus org.kde.kglobalaccel /component/kwin invokeShortcut \"Toggle Night Color\""
+# bash
+alias ll="ls -alhF --group-directories-first"
 
-# vim
-alias edit-vimrc="vim $HOME/.vimrc"
+# Kerbernetes
+alias kube_gtp=export KUBECONFIG=/home/cosmin/.kube/kubeconfig-ctp-admin
+alias k=/usr/local/bin/kubectl
+alias kgp="kubectl get pods"
+alias kdp="kubectl describe pod"
+alias krp="kubectl delete pod"
+alias kgmap="kubectl describe configMap"
+alias kgctx="kubectl config get-contexts"
+alias kgevents="kubectl get events --sort-by='.metadata.creationTimestamp'"
 
-# delete vim swap files
-alias rmswp="find . -type f -name \"*.sw[klmnop]\" -delete"
+# stuff
+alias v=vim
+alias nv='/home/cosmin/Downloads/nvim.appimage'
+alias ctp='cd $HOME/projects/tolling-proxy'
+alias ctb='cd $HOME/projects/bitbucket'
+alias ctp_connector='cd $HOME/projects/tolling-proxy/pipelines.connector.mqtt2kafka'
+alias vfim="`which vifm` $HOME/projects/tolling-proxy $HOME/projects/tolling-proxy"
+alias stock="ticker --config $HOME/.config/ticker/.ticker.yaml"
+alias cdg='cd $HOME/projects/gphoto'
 
-#aws cli
-alias describe-instances="aws ec2 describe-instances --filter Name=tag:Name,Values=openwis* --query 'Reservations[*].Instances[*].[Tags[?Key==\`Name\`].Value|[0], InstanceId, State.Name, NetworkInterfaces[0].PrivateIpAddress, PublicIpAddress, SubnetId]' --output table"
-alias describe-addresses="aws ec2 describe-addresses --query \"Addresses[*].[Tags[?Key=='Name'].Value|[0],PublicIp, AllocationId,InstanceId]\" --output table"
+## ssh
+alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"
+alias ssh-cosminpc="ssh -i $HOME/.ssh/home cosmin@cosminpc"
 
-# load all my keys
-alias load-keys="find ~/.ssh ! -name \"*pub\" ! -name \"known*\" -type f -exec ssh-add {} \\;"
+# psql
+alias psql_tolling="psql -h localhost -p 5432 tolling resources_admin"
 
-# spotify
-alias spp="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-alias sn="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-alias sp="qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+# docker
+alias dps='docker ps --format "{{json .}}" | jq "del(.Labels,.LocalVolumes,.Size,.Mounts)"'
 
-# Openwis
-alias logf="tail -f logs/openwis.log"
-alias catalinaf="tail -f /opt/openwis/tomcat/logs/catalina.out"
-alias openwis_psqsl="psql -h openwis-db-1.cxaczg5nxvqg.eu-west-3.rds.amazonaws.com -p 5432 OpenWIS openwis"
+# podman
+alias pd=`which podman`
+alias pcl='podman container ls'
+alias pcla='podman container ls -a'
+alias pcr='podman container rm --force'
+alias pcs='podman container stop'
+alias pl='podman logs'
+alias plf='podman logs -f'
+
 
