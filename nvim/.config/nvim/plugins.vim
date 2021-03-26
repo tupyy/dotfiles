@@ -82,5 +82,6 @@ source ~/.config/nvim/plugin/neo-completion.vim
 source ~/.config/nvim/plugin/vim-go.vim
 source ~/.config/nvim/plugin/ultisnips.vim
 source ~/.config/nvim/plugin/multi-cursor.vim
+source ~/.config/nvim/plugin/vimspector.vim
 
 let g:vimspector_enable_mappings='HUMAN'
