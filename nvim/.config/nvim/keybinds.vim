@@ -14,9 +14,6 @@ nmap <C-Left> <C-W><C-H>
 nmap <C-Up> <C-W><C-K>
 nmap <C-Down> <C-W><C-J>
 
-" Remap Vim 0 to first non-blank character
-map 0 ^
-
 " Move the current line up or down
 nmap <silent> <Esc>j mz:m+<CR>`z
 nmap <silent> <Esc>k mz:m-2<CR>`z
