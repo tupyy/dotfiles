@@ -173,3 +173,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{n
 vremea() {
     curl -s "wttr.in"
 }
+
+# k8s completion
+source <(kubectl completion bash)
+complete -F __start_kubectl k
