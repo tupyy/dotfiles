@@ -18,8 +18,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 
 " Jumping around files
@@ -62,6 +62,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
 Plug 'prettier/vim-prettier', { 'do': 'npm  install' }
 Plug 'majutsushi/tagbar'
