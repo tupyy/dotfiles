@@ -62,7 +62,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
 Plug 'prettier/vim-prettier', { 'do': 'npm  install' }
 Plug 'majutsushi/tagbar'
