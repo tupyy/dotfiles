@@ -135,3 +135,6 @@ set t_Co=256
 
 " Use dracula theme
 colorscheme gruvbox
+
+" source function
+source ~/.config/nvim/functions.vim 

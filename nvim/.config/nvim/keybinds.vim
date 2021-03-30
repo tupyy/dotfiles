@@ -81,3 +81,13 @@ vmap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
 imap <F3> <esc>:w<CR>:BufOnly!<CR>
 nmap <F3> <esc>:w<CR>:BufOnly!<CR>
 vmap <F3> <esc>:w<CR>:BufOnly!<CR>
+
+" Term
+" Toggle terminal on/off (neovim)
+nnoremap <A-t> :call TermToggle(30)<CR>
+inoremap <A-t> <Esc>:call TermToggle(30)<CR>
+tnoremap <A-t> <C-\><C-n>:call TermToggle(30)<CR>
+
+" Terminal go back to normal mode
+tnoremap <Esc> <C-\><C-n>
+tnoremap :q! <C-\><C-n>:q!<CR>
