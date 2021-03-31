@@ -432,38 +432,10 @@ line-size = 1
 ; [i3wm only] - Uncomment the below line to focus on Spotify when clicking on the song name (credits to https://github.com/Esya)
 ; click-left = i3-msg '[class="Spotify"] focus'
 
-[module/weather]
+[module/gost]
 type = custom/text
 content = "view weather"
 click-left = sh ~/.config/polybar/scripts/wttr.sh
-
-[module/stock]
-type=custom/script
-; Available tags:
-;   <output> - deprecated
-;   <label> (default)
-exec = ~/.config/polybar/scripts/stock.sh RNO
-format = <label>
-
-; Available tokens:
-;   %output%
-; Default: %output%
-label = %output:0:30:...%
-interval = 2
-
-[module/stockAIR]
-type=custom/script
-; Available tags:
-;   <output> - deprecated
-;   <label> (default)
-exec = ~/.config/polybar/scripts/stock.sh AF
-format = <label>
-
-; Available tokens:
-;   %output%
-; Default: %output%
-label = %output:0:30:...%
-interval = 2
 
 [settings]
 screenchange-reload = true
