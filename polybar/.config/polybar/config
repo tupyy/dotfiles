@@ -421,6 +421,13 @@ format-underline = #1db954
 line-size = 0.5
 click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
+[module/monitorMode]
+type = custom/script
+
+format = "<label>"
+format-padding = 2
+
+
 [module/spotify]
 type = custom/ipc
 hook-0 = echo ""

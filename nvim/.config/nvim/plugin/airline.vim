@@ -19,6 +19,7 @@ endif
 " Do not draw separators for empty sections
 let g:airline_skip_empty_sections = 1
 let w:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Caches the changes to the highlighting groups, should be faster
 let g:airline_highlighting_cache = 1
@@ -37,11 +38,9 @@ let g:airline_section_z = '%3v'
 
 let g:airline_extensions = [
   \ 'branch',
-  \ 'coc',
   \ 'csv',
   \ 'ctrlp',
   \ 'hunks',
-  \ 'undotree',
   \ 'vimtex',
   \ 'whitespace'
   \ ]
