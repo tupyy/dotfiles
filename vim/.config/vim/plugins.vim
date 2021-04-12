@@ -18,11 +18,15 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'fatih/vim-go'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dadbod'
+
+"Erlang
+Plug 'vim-erlang/vim-erlang'
+Plug 'vim-erlang/vim-erlang-runtime '
+Plug 'vim-erlang/vim-rebar'
+Plug 'vim-erlang/vim-dialyzer'
+Plug 'vim-erlang/vim-compot'
 
 " Git
 Plug 'tpope/vim-fugitive'
