@@ -134,6 +134,9 @@ if [ -f "$HOME/.bash_export" ]; then
   . $HOME/.bash_export
 fi
 
+# Load internal exports
+[[ -f "$HOME/.bash_export_internal" ]] && source "$HOME/.bash_export_internal"
+
 if [ -f "$HOME/.aws_functions" ]; then
     . $HOME/.aws_functions
 fi
