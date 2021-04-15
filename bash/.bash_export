@@ -9,6 +9,6 @@ export GITLAB_URI=https://code.tooling.prod.cdsf.io
 # set editor to vim
 export EDITOR=/usr/bin/vim
 
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.9.11-9.fc33.x86_64"
+export JAVA_HOME="/usr/lib/jvm/jre-11-openjdk-11.0.10.0.9-0.fc34.x86_64"
 export KUBECONFIG=/home/cosmin/.kube/kubeconfig-ctp-admin
 
