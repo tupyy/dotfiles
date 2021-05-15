@@ -6,7 +6,7 @@ col3='${goto 380}'
 col4='${goto 530}'
 col5='${goto 660}'
 col6='${goto 940}'
-red='${color red}'
+red='${color #fc6c71}'
 black='${color black}'
 green='${color green}'
 
