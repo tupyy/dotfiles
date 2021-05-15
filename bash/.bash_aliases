@@ -27,6 +27,7 @@ alias ssh-cosminpc="ssh -i $HOME/.ssh/home cosmin@cosminpc"
 
 # psql
 alias psql_tolling="psql -h localhost -p 5432 tolling resources_admin"
+alias psql_portforward="kubectl port-forward -n ctp-test port-forward-pg-5b67cd45bd-2fpgz 5432:5432"
 
 # docker
 alias dps='docker ps --format "{{json .}}" | jq "del(.Labels,.LocalVolumes,.Size,.Mounts)"'

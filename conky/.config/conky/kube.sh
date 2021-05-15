@@ -9,6 +9,12 @@ red='${color red}' # today's color
 green='${color green}' # days of this month color
 white='${color white}'
 
+systemctl -q is-active gost
+if [[ $? != 0 ]]; then
+   echo "kube unavailable"
+   exit 0
+fi
+
 # the next line is configurable
 tmp="$HOME/tmp/conky.kube.sh" # choose a temporary file, preferably in a tmpfs
 
