@@ -42,14 +42,10 @@ function format_line(id,image,names,networks,ports,state) {
         i = 1
         middle = int(n / 2)
         while (i <= n) {
-            if ( i == 1 ) {
-                _line=sprintf("'"$col5"'%s\n",ports_list[i])
+            if (i < middle || i > middle) {
+               _line=sprintf("%s'"$col5"'%s\n",_line,ports_list[i])
             } else {
-                if (i < middle || i > middle) {
-                    _line=sprintf("%s'"$col5"'%s\n",_line,ports_list[i])
-                } else {
-                    _line=sprintf("%s'"$col1"'%s'"$col2"'%s'"$col3"'%s'"$col4"'%s'"$col5"'%s'"$col6"'%s\n",_line,id,image,names,networks,ports_list[i],state)
-                }
+               _line=sprintf("%s'"$col1"'%s'"$col2"'%s'"$col3"'%s'"$col4"'%s'"$col5"'%s'"$col6"'%s\n",_line,id,image,names,networks,ports_list[i],state)
             }
             i++ 
         }
