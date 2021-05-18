@@ -41,6 +41,9 @@ function format_line(id,image,names,networks,ports,state) {
     if (n > 1) {
         i = 1
         middle = int(n / 2)
+        if ( n % 2 != 0 ) {
+            middle += 1
+        }
         while (i <= n) {
             if (i < middle || i > middle) {
                _line=sprintf("%s'"$col5"'%s\n",_line,ports_list[i])

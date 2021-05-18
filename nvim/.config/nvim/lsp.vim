@@ -46,10 +46,23 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "gopls", "rls"}
+local servers = { "gopls", "rls", "vls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+local vls_name = "vuels"
+configs[vls_name] = {
+    default_config = {
+      cmd = {'vls', '--stdio'};
+      filetypes = {'vue'};
+      root_dir = function(fname)
+        return util.root_pattern("tsconfig.json")(fname) or
+        util.root_pattern("package.json", "jsconfig.json", ".git")(fname);
+      end
+    };
+}
+nvim_lsp[vls_name].setup{ on_attach = on_attach }
 
 local server_name = "tsserver"
 local bin_name = "typescript-language-server"
