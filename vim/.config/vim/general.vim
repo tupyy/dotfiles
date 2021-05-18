@@ -28,6 +28,7 @@ set scrolloff=999
 
 " Turn on the wild menu
 set wildmode=longest,list,full
+set whichwrap=<,>[,],b,
 
 " Ignore compiled files
 set wildignore+=*.o,*~,*.pyc,*/.git/*,*/.DS_Store,*/node_modules/*

@@ -20,6 +20,8 @@ alias ctp_connector='cd $HOME/projects/tolling-proxy/pipelines.connector.mqtt2ka
 alias vfim="`which vifm` $HOME/projects/tolling-proxy $HOME/projects/tolling-proxy"
 alias stock="ticker --config $HOME/.config/ticker/.ticker.yaml"
 alias cdg='cd $HOME/projects/gphoto'
+alias get_token='cat $HOME/.artifactory | tail -n 1'
+alias get_api_key='cat $HOME/.artifactory | head -n 1'
 
 ## ssh
 alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"
