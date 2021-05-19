@@ -10,6 +10,8 @@ alias krp="kubectl delete pod"
 alias kgmap="kubectl describe configMap"
 alias kgctx="kubectl config get-contexts"
 alias kgevents="kubectl get events --sort-by='.metadata.creationTimestamp'"
+alias kube_val="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-val-admin"
+alias kube_int="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-admin"
 
 # stuff
 alias v=vim
