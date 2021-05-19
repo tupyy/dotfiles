@@ -18,7 +18,13 @@ fi
 # the next line is configurable
 tmp="$HOME/tmp/conky.kube.sh" # choose a temporary file, preferably in a tmpfs
 
-KUBECONFIG=$HOME/.kube/kubeconfig-ctp-admin kubectl get pods | 
+if [[ $1 == "int" ]]; then
+    kubeconfig_file=$HOME/.kube/kubeconfig-ctp-admin
+elif [[ $1 == "val" ]]; then
+    kubeconfig_file=$HOME/.kube/kubeconfig-ctp-val-admin
+fi
+
+KUBECONFIG=${kubeconfig_file} kubectl get pods | 
 awk '
     $3 ~ /Running|Completed/ {
         printf "'"$green"''"$col1"'%s'"$col2"'%s'"$ok_color"''"$col3"'%s'"$black"''"$col4"'%s'"$col5"'%s\n", $1,$2,$3,$4,$5;
