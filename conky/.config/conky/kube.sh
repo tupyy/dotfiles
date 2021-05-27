@@ -20,8 +20,10 @@ tmp="$HOME/tmp/conky.kube.sh" # choose a temporary file, preferably in a tmpfs
 
 if [[ $1 == "int" ]]; then
     kubeconfig_file=$HOME/.kube/kubeconfig-ctp-admin
+    tmp=$tmp"-int"
 elif [[ $1 == "val" ]]; then
     kubeconfig_file=$HOME/.kube/kubeconfig-ctp-val-admin
+    tmp=$tmp"-val"
 fi
 
 KUBECONFIG=${kubeconfig_file} kubectl get pods | 
