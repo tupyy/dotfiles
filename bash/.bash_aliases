@@ -8,7 +8,7 @@ alias kgp="kubectl get pods"
 alias kdp="kubectl describe pod"
 alias krp="kubectl delete pod"
 alias kgmap="kubectl describe configMap"
-alias kgctx="kubectl config get-contexts"
+alias kgctx="kubectl config current-context"
 alias kgevents="kubectl get events --sort-by='.metadata.creationTimestamp'"
 alias kube_val="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-val-admin"
 alias kube_int="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-admin"
@@ -21,7 +21,7 @@ alias ctb='cd $HOME/projects/bitbucket'
 alias ctp_connector='cd $HOME/projects/tolling-proxy/pipelines.connector.mqtt2kafka'
 alias vfim="`which vifm` $HOME/projects/tolling-proxy $HOME/projects/tolling-proxy"
 alias stock="ticker --config $HOME/.config/ticker/.ticker.yaml"
-alias cdg='cd $HOME/projects/gphoto'
+alias cdg='cd $HOME/projects/perso/gophoto'
 alias get_token='cat $HOME/.artifactory | tail -n 1'
 alias get_api_key='cat $HOME/.artifactory | head -n 1'
 
@@ -35,6 +35,7 @@ alias psql_portforward="kubectl port-forward -n ctp-test port-forward-pg-5b67cd4
 
 # docker
 alias dps='docker ps --format "{{json .}}" | jq "del(.Labels,.LocalVolumes,.Size,.Mounts)"'
+export DOCKER_REGISTRY="harbor.registry.prod.cdsf.io"
 
 # podman
 alias pd=`which podman`

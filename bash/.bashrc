@@ -129,6 +129,7 @@ if [ -f "$HOME/.utils/bash-git-prompt/gitprompt.sh" ]; then
     source $HOME/.utils/bash-git-prompt/gitprompt.sh
 fi
 
+
 # Load my exports
 if [ -f "$HOME/.bash_export" ]; then
   . $HOME/.bash_export
