@@ -91,3 +91,7 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(30)<CR>
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
+
+" Harpoon
+nmap <leader>m :lua require("harpoon.mark").add_file()<CR>
+nmap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
