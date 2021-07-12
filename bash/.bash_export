@@ -3,7 +3,7 @@
 export GOPATH=$HOME/go
 export GO111MODULE=on
 export JAVA_HOME=/usr/lib/jvm/java
-export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin:$HOME/.cargo/bin:/usr/local/go/bin:/opt/protoc/bin
 export GITLAB_URI=https://code.tooling.prod.cdsf.io
 
 # set editor to vim

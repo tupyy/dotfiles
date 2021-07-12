@@ -1,10 +1,10 @@
 #!/bin/bash
 
-col1='${goto 40}'
-col2='${goto 350}'
-col3='${goto 400}'
-col4='${goto 550}'
-col5='${goto 630}'
+col1='${goto 240}'
+col2='${goto 800}'
+col3='${goto 900}'
+col4='${goto 1100}'
+col5='${goto 1200}'
 red='${color red}' # today's color
 green='${color green}' # days of this month color
 white='${color white}'
