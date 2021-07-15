@@ -1,11 +1,12 @@
 #!/bin/bash
 
-col1='${goto 40}'
-col2='${goto 140}'
-col3='${goto 380}'
-col4='${goto 530}'
-col5='${goto 660}'
-col6='${goto 940}'
+offset=$(($1+500))
+col1='${goto '"$offset"'}'
+col2='${goto '"$(($offset+140))"'}'
+col3='${goto '"$(($offset+380))"'}'
+col4='${goto '"$(($offset+530))"'}'
+col5='${goto '"$(($offset+660))"'}'
+col6='${goto '"$(($offset+930))"'}'
 red='${color #fc6c71}'
 black='${color black}'
 green='${color green}'

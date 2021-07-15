@@ -1,10 +1,11 @@
 #!/bin/bash
 
-col1='${goto 240}'
-col2='${goto 800}'
-col3='${goto 900}'
-col4='${goto 1100}'
-col5='${goto 1200}'
+offset=$(($2+500))
+col1='${goto '"$offset"'}'
+col2='${goto '"$(($offset+500))"'}'
+col3='${goto '"$(($offset+620))"'}'
+col4='${goto '"$(($offset+800))"'}'
+col5='${goto '"$(($offset+950))"'}'
 red='${color red}' # today's color
 green='${color green}' # days of this month color
 white='${color white}'
