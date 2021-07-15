@@ -23,6 +23,7 @@ alias stock="ticker --config $HOME/.config/ticker/.ticker.yaml"
 alias cdg='cd $HOME/projects/perso/gphoto'
 alias get_token='cat $HOME/.artifactory | tail -n 1'
 alias get_api_key='cat $HOME/.artifactory | head -n 1'
+alias run_stores_postgres="docker run --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
 
 ## ssh
 alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"
