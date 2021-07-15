@@ -6,7 +6,7 @@ col2='${goto '"$(($offset+500))"'}'
 col3='${goto '"$(($offset+620))"'}'
 col4='${goto '"$(($offset+800))"'}'
 col5='${goto '"$(($offset+950))"'}'
-red='${color red}' # today's color
+red='${color #e26e16}' # today's color
 green='${color green}' # days of this month color
 white='${color white}'
 
