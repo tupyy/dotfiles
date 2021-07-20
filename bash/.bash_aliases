@@ -15,14 +15,14 @@ alias kube_int="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-admin"
 
 # stuff
 alias v=vim
-alias nv='/home/cosmin/Downloads/nvim.appimage'
+alias nv='nvim'
 alias ctp='cd $HOME/projects/tolling-proxy'
 alias ctb='cd $HOME/projects/bitbucket'
 alias vfim="`which vifm` $HOME/projects/tolling-proxy $HOME/projects/tolling-proxy"
 alias cdg='cd $HOME/projects/perso/gphotos'
 alias get_token='cat $HOME/.artifactory | tail -n 1'
 alias get_api_key='cat $HOME/.artifactory | head -n 1'
-alias run_stores_postgres="docker run --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
+alias run_stores_postgres="docker run -d --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
 
 ## ssh
 alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"

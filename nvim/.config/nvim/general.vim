@@ -138,3 +138,8 @@ colorscheme gruvbox
 
 " source function
 source ~/.config/nvim/functions.vim 
+
+au BufRead,BufNewFile *html set filetype=html
+au BufRead,BufNewFile *.css set filetype=css
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
