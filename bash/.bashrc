@@ -181,4 +181,4 @@ source <(kubectl completion bash)
 complete -F __start_kubectl k
 
 # init mcfly
-eval "$(mcfly init bash)"
+#eval "$(mcfly init bash)"
