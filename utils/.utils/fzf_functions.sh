@@ -4,7 +4,7 @@
 # ex: vf word1 word2 ... (even part of a file name)
 # zsh autoload function
 vf() {
-    vim $(fzf)
+    nvim $(fzf)
 }
 
 # fd - cd to selected directory
