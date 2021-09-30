@@ -77,11 +77,11 @@ set showtabline=4
 " Do not wrap lines
 set nowrap
 
-" Keep cursor in middle of screen
-"set scrolloff=999
+" don't look into vendor folder
+set wildignore=*/vendor/*
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Back-end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling
