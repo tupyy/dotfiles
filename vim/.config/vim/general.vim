@@ -23,9 +23,6 @@ set tabstop=4 shiftwidth=4 expandtab
 set nu
 set relativenumber
 
-" Keep cursor in middle of screen
-set scrolloff=999
-
 " Turn on the wild menu
 set wildmode=longest,list,full
 set whichwrap=<,>[,],b,

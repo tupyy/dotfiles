@@ -34,6 +34,9 @@ nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 
+" Shot todos
+noremap <Leader>r :noautocmd vimgrep /TODO/j **/*.go<CR>:cw<CR>
+
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
 

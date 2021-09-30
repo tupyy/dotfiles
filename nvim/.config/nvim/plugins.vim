@@ -30,11 +30,11 @@ Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
-Plug 'hrsh7th/nvim-compe'
+"Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lervag/vimtex'
-Plug 'valloric/MatchTagAlways'
+"Plug 'valloric/MatchTagAlways'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'stephpy/vim-yaml'
