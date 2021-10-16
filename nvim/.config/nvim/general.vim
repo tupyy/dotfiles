@@ -77,11 +77,11 @@ set showtabline=4
 " Do not wrap lines
 set nowrap
 
-" Keep cursor in middle of screen
-"set scrolloff=999
+" don't look into vendor folder
+set wildignore=*/vendor/*
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Back-end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling
@@ -138,3 +138,8 @@ colorscheme gruvbox
 
 " source function
 source ~/.config/nvim/functions.vim 
+
+au BufRead,BufNewFile *html set filetype=html
+au BufRead,BufNewFile *.css set filetype=css
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+

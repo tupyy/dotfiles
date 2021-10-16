@@ -15,15 +15,14 @@ alias kube_int="export KUBECONFIG=$HOME/.kube/kubeconfig-ctp-admin"
 
 # stuff
 alias v=vim
-alias nv='/home/cosmin/Downloads/nvim.appimage'
+alias nv='nvim'
 alias ctp='cd $HOME/projects/tolling-proxy'
 alias ctb='cd $HOME/projects/bitbucket'
-alias ctp_connector='cd $HOME/projects/tolling-proxy/pipelines.connector.mqtt2kafka'
 alias vfim="`which vifm` $HOME/projects/tolling-proxy $HOME/projects/tolling-proxy"
-alias stock="ticker --config $HOME/.config/ticker/.ticker.yaml"
-alias cdg='cd $HOME/projects/perso/gophoto'
+alias cdg='cd $HOME/projects/perso/gphotos'
 alias get_token='cat $HOME/.artifactory | tail -n 1'
 alias get_api_key='cat $HOME/.artifactory | head -n 1'
+alias run_stores_postgres="docker run -d --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
 
 ## ssh
 alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"
@@ -41,9 +40,9 @@ export DOCKER_REGISTRY="harbor.registry.prod.cdsf.io"
 
 # podman
 alias pd=`which podman`
-alias pcl='podman container ls'
-alias pcla='podman container ls -a'
-alias pcr='podman container rm --force'
+alias pcls='podman container ls'
+alias pclsa='podman container ls -a'
+alias pcrm='podman container rm --force'
 alias pcs='podman container stop'
 alias pl='podman logs'
 alias plf='podman logs -f'

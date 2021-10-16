@@ -4,4 +4,6 @@
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
-nmap <leader><F5> <Plug>VimspectorReset
+nmap <leader><F3> <Plug>VimspectorReset
+
+let g:vimspector_sidebar_width = 90

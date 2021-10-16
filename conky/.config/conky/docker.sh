@@ -1,11 +1,12 @@
 #!/bin/bash
 
-col1='${goto 40}'
-col2='${goto 140}'
-col3='${goto 380}'
-col4='${goto 530}'
-col5='${goto 660}'
-col6='${goto 940}'
+offset=$(($1+500))
+colID='${goto '"$offset"'}'
+colImage='${goto '"$(($offset+140))"'}'
+colName='${goto '"$(($offset+440))"'}'
+colNetwork='${goto '"$(($offset+668))"'}'
+colPorts='${goto '"$(($offset+900))"'}'
+colState='${goto '"$(($offset+1150))"'}'
 red='${color #fc6c71}'
 black='${color black}'
 green='${color green}'
@@ -17,7 +18,7 @@ docker ps -a --format "{{.ID}}|{{.Image}}|{{.Names}}|{{.Networks}}|{{.Ports}}|{{
 awk '
     BEGIN {
     FS="|"
-    printf "'"$col1"'%s'"$col2"'%s'"$col3"'%s'"$col4"'%s'"$col5"'%s'"$col6"'%s\n","ID","Image","Name","Networks","Ports","State";
+    printf "'"$colID"'%s'"$colImage"'%s'"$colName"'%s'"$colNetwork"'%s'"$colPorts"'%s'"$colState"'%s\n","ID","Image","Name","Networks","Ports","State";
     }
     $2 ~ /^docker/ {
         n=split($2,image,"/")       
@@ -46,15 +47,15 @@ function format_line(id,image,names,networks,ports,state) {
         }
         while (i <= n) {
             if (i < middle || i > middle) {
-               _line=sprintf("%s'"$col5"'%s\n",_line,ports_list[i])
+               _line=sprintf("%s'"$colPorts"'%s\n",_line,ports_list[i])
             } else {
-               _line=sprintf("%s'"$col1"'%s'"$col2"'%s'"$col3"'%s'"$col4"'%s'"$col5"'%s'"$col6"'%s\n",_line,id,image,names,networks,ports_list[i],state)
+               _line=sprintf("%s'"$colID"'%s'"$colImage"'%s'"$colName"'%s'"$colNetwork"'%s'"$colPorts"'%s'"$colState"'%s\n",_line,id,image,names,networks,ports_list[i],state)
             }
             i++ 
         }
         return _line
     }
-    return sprintf("'"$col1"'%s'"$col2"'%s'"$col3"'%s'"$col4"'%s'"$col5"'%s'"$col6"'%s\n",id,image,names,networks,ports,state)
+    return sprintf("'"$colID"'%s'"$colImage"'%s'"$colName"'%s'"$colNetwork"'%s'"$colPorts"'%s'"$colState"'%s\n",id,image,names,networks,ports,state)
 }
 ' > $tmp
 cat $tmp

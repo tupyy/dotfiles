@@ -34,6 +34,9 @@ nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 
+" Shot todos
+noremap <Leader>r :noautocmd vimgrep /TODO/j **/*.go<CR>:cw<CR>
+
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
@@ -91,3 +94,7 @@ tnoremap <A-t> <C-\><C-n>:call TermToggle(30)<CR>
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
 tnoremap :q! <C-\><C-n>:q!<CR>
+
+" Harpoon
+nmap <leader>m :lua require("harpoon.mark").add_file()<CR>
+nmap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>

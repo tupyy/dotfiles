@@ -30,10 +30,11 @@ Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
+"Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lervag/vimtex'
-Plug 'valloric/MatchTagAlways'
+"Plug 'valloric/MatchTagAlways'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'stephpy/vim-yaml'
@@ -52,6 +53,8 @@ Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 
 " Miscellaneous
+Plug 'nvim-lua/plenary.nvim' " don't forget to add this one if you don't have it yet!
+Plug 'nvim-lua/popup.nvim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'henrik/vim-indexed-search'
 Plug 'chrisbra/csv.vim'
@@ -69,6 +72,9 @@ Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vista.vim'
+Plug 'theprimeagen/harpoon'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'pedrohdz/vim-yaml-folds'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
