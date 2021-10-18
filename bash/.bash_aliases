@@ -30,12 +30,13 @@ alias ssh-cosminpc="ssh -i $HOME/.ssh/home cosmin@cosminpc"
 
 # psql
 alias psql_tolling="psql -h localhost -p 5432 tolling resources_admin"
-alias psql_portforward="kubectl port-forward -n ctp-test port-forward-pg-5b67cd45bd-2fpgz 5432:5432"
+alias psql_tollingproxy="psql -h localhost -p 5432 tollingproxy resources_admin"
+alias psql_portforward="kubectl port-forward -n ctp-test port-forward-pg-78d669d76-np4zp 5432:5432"
 alias run_stores_postgres="docker run --rm -d -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
 
 # docker
 alias dps='docker ps --format "{{json .}}" | jq "del(.Labels,.LocalVolumes,.Size,.Mounts)"'
-alias drm='docker ps --format "{{.ID}}" | xargs docker rm --force'
+alias drm='docker ps -a --format "{{.ID}}" | xargs docker rm --force'
 export DOCKER_REGISTRY="harbor.registry.prod.cdsf.io"
 
 # podman
