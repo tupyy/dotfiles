@@ -25,8 +25,7 @@ alias get_api_key='cat $HOME/.artifactory | head -n 1'
 alias run_stores_postgres="docker run -d --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
 
 ## ssh
-alias ssh-ubuntu="ssh -i $HOME/.ssh/home cosmin@ubuntusrv"
-alias ssh-cosminpc="ssh -i $HOME/.ssh/home cosmin@cosminpc"
+alias ssh-fedora="ssh cosmin@fedorasrv"
 
 # psql
 alias psql_tolling="psql -h localhost -p 5432 tolling resources_admin"
@@ -47,5 +46,3 @@ alias pcrm='podman container rm --force'
 alias pcs='podman container stop'
 alias pl='podman logs'
 alias plf='podman logs -f'
-
-
