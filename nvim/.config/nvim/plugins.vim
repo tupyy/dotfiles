@@ -75,6 +75,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'theprimeagen/harpoon'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'pedrohdz/vim-yaml-folds'
+Plug 'rhysd/clever-f.vim'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

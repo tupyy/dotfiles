@@ -64,7 +64,7 @@ set foldenable
 set foldlevelstart=10
 set foldmethod=syntax
 set foldopen-=block
-set foldcolumn=0
+set foldcolumn=4
 
 " We don't need to see things like -- INSERT -- anymore
 set noshowmode
