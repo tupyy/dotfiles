@@ -23,8 +23,8 @@ alias cdg='cd $HOME/projects/perso/gphotos'
 alias get_token='cat $HOME/.artifactory | tail -n 1'
 alias get_api_key='cat $HOME/.artifactory | head -n 1'
 alias run_stores_postgres="docker run -d --rm -p 5432:5432 docker.repo.tooling.prod.cdsf.io/cloud/continental/ctp/tools/dev/local-postgres:latest"
-alias encrypt_yaml='openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 10000 -in .gophoto-prod.yaml -out .gophoto-prod.enc -pass file:./key.bin'
-alias decrypt_yaml='openssl enc -aes-256-cbc -d -md sha512 -pbkdf2 -iter 10000 -in .gophoto-prod.yaml -out .gophoto-prod.yaml -pass file:./key.bin'
+alias encrypt_yaml='openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 10000 -in ./.gophoto-prod.yaml -out ./.gophoto-prod.enc -pass file:./key.bin'
+alias decrypt_yaml='openssl enc -aes-256-cbc -d -md sha512 -pbkdf2 -iter 10000 -in ./.gophoto-prod.enc -out ./.gophoto-prod.yaml -pass file:./key.bin'
 
 ## ssh
 alias ssh-fedora="ssh cosmin@fedorasrv"

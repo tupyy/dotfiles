@@ -1,4 +1,4 @@
-let g:go_code_completion_enabled = 0
+let g:go_code_completion_enabled = 1
 let g:go_gopls_options=['-remote=auto']
 let g:go_highlight_functions = 1
 let g:go_decls_mode = 'fzf'
