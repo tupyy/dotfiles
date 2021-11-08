@@ -66,9 +66,6 @@ set foldmethod=syntax
 set foldopen-=block
 set foldcolumn=4
 
-" We don't need to see things like -- INSERT -- anymore
-set noshowmode
-
 " 1 tab = 2 spaces
 set shiftwidth=4
 set tabstop=4
@@ -108,9 +105,6 @@ set ignorecase
 
 " When searching, try to be be smart about cases
 set smartcase
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
 
 " For regex, turn magic on
 set magic
