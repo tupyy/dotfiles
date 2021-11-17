@@ -3,3 +3,4 @@ polybar/.config/polybar/polybar-spotify-controls
 nvim/.config/nvim/undodir/*
 **/*.swp
 vifm/.config/vifm/vifminfo.json
+bash/.bash_export
