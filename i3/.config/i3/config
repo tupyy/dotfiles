@@ -221,10 +221,10 @@ for_window [instance="__scratchpad"] resize set 2400 1600
 exec --no-startup-id urxvt -name "__scratchpad" -pe tabbed
 
 #file manager
-#bindsym $mod+a [instance="vifm"] scratchpad show; [instance="vifm"] move position center
-#exec --no-startup-id urxvt -name "vifm" -e vifm
-#for_window [instance="vifm"] move scratchpad
-#for_window [instance="vifm"] resize set 1200 800
+bindsym $mod+a [instance="aerc"] scratchpad show; [instance="aerc"] move position center
+bindsym $mod+Ctrl+a exec --no-startup-id urxvt -name "aerc" -e aerc
+for_window [instance="aerc"] move scratchpad
+for_window [instance="aerc"] resize set 2400 1600
 
 for_window [class="^.*"] border pixel 1
 #gaps inner 4
