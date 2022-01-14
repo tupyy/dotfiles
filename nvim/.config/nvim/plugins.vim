@@ -41,6 +41,9 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'puremourning/vimspector'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-github.nvim'
 
 "Snippets
 " Track the engine.

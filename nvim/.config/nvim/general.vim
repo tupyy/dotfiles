@@ -77,8 +77,9 @@ set nowrap
 " don't look into vendor folder
 set wildignore=*/vendor/*
 
+set ruler
 
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Back-end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spelling
@@ -114,6 +115,11 @@ set whichwrap+=<,>,h,l
 
 " Allow for copy and pasting from clipboard
 set clipboard=unnamedplus
+
+set noswapfile          " no swap file
+set nobackup            " no backup
+set nowritebackup       " 
+
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

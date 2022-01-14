@@ -25,7 +25,7 @@ nmap <C-n> :Fern . -drawer -toggle -reveal=%<CR>
 nmap <C-h> :Files<CR>
 
 "float term
-nmap <leader>f :FloatermNew --height=0.8 --width=0.8 --wintype=float<CR>
+nmap <leader>ft :FloatermNew --height=0.8 --width=0.8 --wintype=float<CR>
 
 " LSP
 nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
@@ -98,3 +98,10 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 " Harpoon
 nmap <leader>m :lua require("harpoon.mark").add_file()<CR>
 nmap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+" Telescope
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
