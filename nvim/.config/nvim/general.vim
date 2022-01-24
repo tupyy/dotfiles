@@ -127,6 +127,19 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Close buffer without closing the split
 nmap ,d :b#<bar>bd#<CR>
 
+" ----------------------------------------- "
+" File Type settings 			    		"
+" ----------------------------------------- "
+
+au BufNewFile,BufRead *.vim setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
+au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
+au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
+
+" Go settings
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -134,7 +147,9 @@ nmap ,d :b#<bar>bd#<CR>
 set t_Co=256
 
 " Use dracula theme
+syntax enable
 colorscheme gruvbox
+"colorscheme dracula
 
 " source function
 source ~/.config/nvim/functions.vim 
@@ -143,3 +158,5 @@ au BufRead,BufNewFile *html set filetype=html
 au BufRead,BufNewFile *.css set filetype=css
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'

@@ -48,3 +48,65 @@ alias pcrm='podman container rm --force'
 alias pcs='podman container stop'
 alias pl='podman logs'
 alias plf='podman logs -f'
+
+# minikube
+alias mfr='docker run --rm -it --network=host alpine ash -c "apk add socat && socat TCP-LISTEN:5000,reuseaddr,fork TCP:$(minikube ip):5000"'
+
+#ADL
+DEFAULT="\e[39m"
+GREEN="\e[32m"
+RED="\e[31m"
+  
+function clock_sync() {
+    sudo /usr/sbin/VBoxService --timesync-set-start --timesync-set-on-restore --timesync-set-threshold 1000 --timesync-interval 5000
+    return
+}
+alias cls='clock_sync'
+# AWS
+function check_aws_connection() {
+    echo -en "${DEFAULT}AWS_CONNECTION : " && aws s3 ls > /dev/null && { echo -e "${GREEN}OK"; return 0; } || { echo -e "${RED}KO"; return 1; }
+}
+  
+export PATH=$PATH:~/.local/bin
+  
+function adfs_login() {
+    unset AWS_PROFILE
+    echo "Usage : adl <PROFILE> (e.g. adl 1116)"
+    echo "WARNING : cw01/uie12468 / passwd = <ldap one>"
+    PROFILE=$1
+    if [[ ! -z $PROFILE ]]
+    then
+        echo "aws-adfs login --adfs-host=adfs.contiwan.com --session-duration 43200 --profile=$PROFILE"
+        aws-adfs login --adfs-host=adfs.contiwan.com --session-duration 43200 --profile=$PROFILE
+        export AWS_PROFILE=$PROFILE
+    else
+        echo "aws-adfs login --adfs-host=adfs.contiwan.com --session-duration 43200"
+        aws-adfs login --adfs-host=adfs.contiwan.com --session-duration 43200
+        echo "Set AWS_PROFILE !"
+    fi
+    export AWS_DEFAULT_REGION="eu-central-1"
+    export AWS_PROFILE="tts"
+      
+    check_aws_connection || { echo -e "${DEFAULT}Sync VM clock : " && clock_sync && check_aws_connection; }
+}
+alias adl='adfs_login'
+
+
+
+alias butane='podman run --rm --interactive       \
+              --security-opt label=disable        \
+              --volume ${PWD}:/pwd --workdir /pwd \
+              quay.io/coreos/butane:release'
+
+alias coreos-installer='podman run --pull=always            \
+                        --rm --interactive                  \
+                        --security-opt label=disable        \
+                        --volume ${PWD}:/pwd --workdir /pwd \
+                        quay.io/coreos/coreos-installer:release'
+
+alias ignition-validate='podman run --rm --interactive       \
+                         --security-opt label=disable        \
+                         --volume ${PWD}:/pwd --workdir /pwd \
+                         quay.io/coreos/ignition-validate:release'
+
+

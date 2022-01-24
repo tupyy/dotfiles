@@ -21,6 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/gv.vim'
+Plug 'samoshkin/vim-mergetool'
 
 " Jumping around files
 Plug 'ctrlpvim/ctrlp.vim'
@@ -30,14 +31,18 @@ Plug 'lambdalisue/fern.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
-"Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'glepnir/lspsaga.nvim'
+
 Plug 'lervag/vimtex'
-"Plug 'valloric/MatchTagAlways'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
-"Plug 'stephpy/vim-yaml'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 Plug 'puremourning/vimspector'

@@ -180,3 +180,4 @@ complete -F __start_kubectl k
 
 # init mcfly
 #eval "$(mcfly init bash)"
+. "$HOME/.cargo/env"
