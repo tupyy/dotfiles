@@ -32,7 +32,10 @@ nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
 nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
 
 " Tagbar
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>tt :TagbarToggle<CR>
+
+" Close window
+nmap <leader>cw :close<CR>
 
 " Shot todos
 noremap <Leader>r :noautocmd vimgrep /TODO/j **/*.go<CR>:cw<CR>
