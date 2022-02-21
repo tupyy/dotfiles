@@ -40,6 +40,9 @@ nmap <leader>cw :close<CR>
 " Shot todos
 noremap <Leader>r :noautocmd vimgrep /TODO/j **/*.go<CR>:cw<CR>
 
+"Telescope
+noremap <Leader>tl :Telescope<CR>
+
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
