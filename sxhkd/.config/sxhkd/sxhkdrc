@@ -1,0 +1,162 @@
+super + shift + q
+	bspc quit 1 && pkill bar
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+###########
+# Windows #
+###########
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+# Close or kill window
+super + shift + a
+    bspc node -{c,k}
+
+# Focus or swap window in the current workspace
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# Focus the given workspace or move window to that workspace
+super + {_, shift+} {ampersand,eacute,quotedbl,apostrophe,parenleft, minus, egrave, underscore, ccedilla, agrave}
+    bspc {desktop -f,node -d} '^{1-9,10}' 
+
+# Focus the next/previous window
+super + {_,shift + }grave
+    bspc node -f {next,prev}.local.!hidden.window
+
+# Focus the last workspace
+super + Tab
+    bspc desktop -f last
+
+# Select previous / next desktop
+super + {p,n}
+	bspc desktop -f {prev.occupied,next.occupied}
+
+# flip (mirror) binary tree horizontally/vertically
+super + alt + {comma,period}
+    bspc desktop -F {vertical,horizontal}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+#
+# move/resize
+#
+# Move floating windows
+super + ctrl + {h,j,k,l}
+    bspc node -v {-50 0,0 50,0 -50,50 0}
+
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+#############
+# Preselect #
+#############
+
+# Preselect the direction
+super + p ; super + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+# Cancel the preselection for the focused desktop
+super + p ; super + Escape
+    bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# open a "scratchpad" terminal (quake-style, in this case, on a 1366x768 display)
+F12
+    urxvt -name URxvtQuake -geometry 110x20+297+11
+
+##############
+# Properties #
+##############
+
+# Toggle fullscreen
+super + f
+    bspc desktop -l next
+# Toggle floating state
+super + shift + f
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node focused -t floating; \
+    else \
+        bspc node focused -t tiled; \
+    fi
+# Toggle sticky flag
+super + s
+    bspc node -g sticky
+
+##############
+# Media keys #
+##############
+
+# Volume
+{XF86AudioMute,XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    amixer -q set Master {toggle,10%- unmute,10%+ unmute}
+super + {button2,button5,button4}
+    amixer -q set Master {toggle,10%- unmute,10%+ unmute}
+# Player
+{XF86AudioPrev,XF86AudioPlay,XF86AudioNext}
+    playerctl {previous,play-pause,next}
+# Brightness
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+    light {-U,-A} 10
+# Screenshot
+{_,ctrl + ,alt + }Print
+    maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
+        | xclip -selection clipboard -t image/png -i && \
+        notify-send -t 1000 "Sceenshot" "Copied to clipboard"
+shift + {_,ctrl + ,alt + }Print
+    mkdir -p $HOME/Pictures/Screenshots/ && \
+    maim {_,-s,-i $(xdotool getactivewindow)} --noopengl \
+        $HOME/Pictures/Screenshots/$(date +screenshot-%Y%m%d-%H%M%S.png) && \
+        notify-send -t 1000 "Sceenshot" "Saved in ~/Pictures/Screenshots"
+
+################
+# Quick launch #
+################
+
+# Run command
+super + d
+    rofi -show run
+# Terminal
+super + Return
+    urxvt
+
+# Floating terminal
+super + shift + Return
+	tdrop -ma -w "50%" -h "50%" -x "25%" -y "25%" -n scratchpad $TERMINAL --class scratchpad
+
+# Web browser
+super + w
+    firefox {_,--private-window}
+# File explorer
+super + e
+    vifm .
+# Key bindings list
+super + slash
+    dmenu-help
+# Power menu
+super + Escape
+    dmenu-power
+# Monitor menu
+super + shift + m
+    dmenu-monitor
+# Lock screen
+super + BackSpace
+    slock
