@@ -158,5 +158,8 @@ au BufRead,BufNewFile *html set filetype=html
 au BufRead,BufNewFile *.css set filetype=css
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
+" format json when save
+au BufWritePost *.json %!jq .
+
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
