@@ -44,6 +44,35 @@ super + alt + {comma,period}
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
+# Navigate layouts
+super + {_,shift + }space
+	bspc desktop --layout {next,prev}
+
+# Rotate desktop
+super + {_,shift + }r
+	bspc node @/ --rotate {90,-90}
+
+# Circulate the leaves of the tree
+super + {_,shift + }c
+	bspc node @/ --circulate {backward,forward}
+
+# Make split ratios equal
+super + equal
+	bspc node @/ --equalize
+
+# Make split ratios balanced
+super + minus
+	bspc node @/ --balance
+
+# Toogle tiling of window
+super + d
+	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
+	bspc node --state \~$state
+
+# Toogle pseudo tiling of window
+super + p
+	bspc node --state \~pseudo_tiled
+
 #
 # move/resize
 #
