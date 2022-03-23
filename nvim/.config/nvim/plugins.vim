@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/bundle/')
 Plug 'dracula/vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -50,6 +51,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+
 "Snippets
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -73,7 +77,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'ap/vim-buftabline'
-Plug 'prettier/vim-prettier', { 'do': 'npm  install' }
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'kshenoy/vim-signature'
@@ -97,5 +100,6 @@ source ~/.config/nvim/plugin/vim-go.vim
 source ~/.config/nvim/plugin/ultisnips.vim
 source ~/.config/nvim/plugin/multi-cursor.vim
 source ~/.config/nvim/plugin/vimspector.vim
+source ~/.config/nvim/plugin/prettier.vim
 
 let g:vimspector_enable_mappings='HUMAN'

@@ -136,6 +136,9 @@ au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
 au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
 au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.tsx setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.ts setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.css setlocal expandtab ts=2 sw=2
 
 " Go settings
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -156,6 +159,7 @@ source ~/.config/nvim/functions.vim
 
 au BufRead,BufNewFile *html set filetype=html
 au BufRead,BufNewFile *.css set filetype=css
+au BufRead,BufNewFile *.ts set filetype=typescript
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " format json when save
