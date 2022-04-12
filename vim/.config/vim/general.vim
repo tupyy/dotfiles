@@ -22,6 +22,7 @@ set hlsearch
 set tabstop=4 shiftwidth=4 expandtab
 set nu
 set relativenumber
+set belloff=all
 
 " Turn on the wild menu
 set wildmode=longest,list,full

@@ -11,7 +11,8 @@ green  = #98c379
 yellow = #d19a66
 
 [bar/topbar]
-monitor = ${env:MONITOR}
+monitor = ${env:MONITOR:}
+monitor-exact = true
 enable-ipc = true
 wm-restack = bspwm
 height = 30
@@ -21,9 +22,9 @@ font-0 = JetBrainsMono Font:style=Regular:size=14;2
 font-1 = "Iosevka Nerd Font:size=14;3"
 padding-right = 1
 module-margin = 2
-modules-left   = bspwm
+modules-left   = i3
 modules-center = date
-modules-right  = ethernet wlan cpu temperature memory battery pulseaudio filesystem 
+modules-right  = ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
 cursor-click = pointer
 tray-position = right
 
@@ -44,6 +45,26 @@ label-focused-background       = ${colors.background-focused}
 label-focused-empty-foreground = ${colors.foreground-focused}
 label-focused-empty-background = ${colors.background-focused}
 label-urgent-foreground        = ${colors.red}
+pin-workspaces = true
+
+[module/i3]
+type = internal/i3
+label-focused       = %name%
+label-focused-empty = ·
+label-occupied      = %name%
+label-urgent        = %name%
+label-empty         = ·
+label-focused-padding        = 1
+label-focused-empty-padding  = 1
+label-occupied-padding       = 1
+label-urgent-padding         = 1
+label-empty-padding          = 1
+label-focused-foreground       = ${colors.foreground-focused}
+label-focused-background       = ${colors.background-focused}
+label-focused-empty-foreground = ${colors.foreground-focused}
+label-focused-empty-background = ${colors.background-focused}
+label-urgent-foreground        = ${colors.red}
+pin-workspaces = true
 
 [module/ethernet]
 type = internal/network
@@ -128,6 +149,7 @@ bar-volume-indicator =
 bar-volume-fill      = -
 bar-volume-empty     = -
 bar-volume-empty-foreground = ${colors.foreground-alt}
+click-right = pavucontrol
 
 [module/date]
 type = internal/date
@@ -190,3 +212,14 @@ menu-2-1-background = ${color.background}
 menu-2-1-exec = menu-open-0
 label-open = Power 
 label-close = x
+
+[module/vpn]
+type =  custom/script
+exec = /home/cosmin/.config/polybar/vpn.sh
+interval = 10
+
+[module/bluetooth]
+type = custom/script
+exec = /home/cosmin/.config/polybar/rofi-bluetooth --status
+interval = 1
+click-left = /home/cosmin/.config/polybar/rofi-bluetooth &

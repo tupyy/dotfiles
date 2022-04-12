@@ -110,6 +110,8 @@ set smartcase
 " For regex, turn magic on
 set magic
 
+set belloff=all
+
 " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
 
@@ -135,6 +137,7 @@ au BufNewFile,BufRead *.vim setlocal noet ts=4 sw=4 sts=4
 au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
 au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
 au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.bu setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.tsx setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.ts setlocal expandtab ts=2 sw=2

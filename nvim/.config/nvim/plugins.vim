@@ -12,6 +12,7 @@ Plug 'dracula/vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'joshdick/onedark.vim'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
