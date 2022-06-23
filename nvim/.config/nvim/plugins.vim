@@ -42,11 +42,23 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'glepnir/lspsaga.nvim'
 
+Plug 'simrat39/rust-tools.nvim'
+Plug 'rust-lang/rust.vim'
+" Debugging
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'Pocco81/DAPInstall.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+
+" For luasnip users.
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 Plug 'lervag/vimtex'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'fatih/vim-go'
-Plug 'rust-lang/rust.vim'
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -54,12 +66,6 @@ Plug 'nvim-telescope/telescope-github.nvim'
 
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'MunifTanjim/prettier.nvim'
-
-"Snippets
-" Track the engine.
-Plug 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
 
 " Easier jumping around/editing
 Plug 'tpope/vim-surround'
@@ -88,6 +94,7 @@ Plug 'theprimeagen/harpoon'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'rhysd/clever-f.vim'
+Plug 'MattesGroeger/vim-bookmarks'
 
 Plug 'ryanoasis/vim-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

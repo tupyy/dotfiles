@@ -1,5 +1,5 @@
 set $mod Mod4
-set $term --no-startup-id urxvt
+set $term --no-startup-id urxvt 
 
 # class                 border  backgr. text    indicator child_border
 set $bd-color #E5F26E
@@ -64,7 +64,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+M move right
+bindsym $mod+Shift+m move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -170,7 +170,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec --no-startup-id xrandr --output HDMI-0 --right-of DVI-0
-exec --no-startup-id xset r rate 200 30
+exec --no-startup-id xset r rate 200 20
+exec --no-startup-id xset s noblank
 exec --no-startup-id nitrogen --restore
 
 bindsym $mod+Ctrl+g exec --no-startup-id gnome-screenshot -i
@@ -181,13 +182,6 @@ bindsym $mod+Ctrl+r exec i3-sensible-terminal -e 'ranger'
 # start capture
 bindsym $mod+Print exec gnome-screenshot -i
 
-# move workspace between monitors
-bindsym $mod+x move workspace to output HDMI-0
-bindsym $mod+Ctrl+x move workspace to output DVI-0
-
-# make nautilus floating
-for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable
-
 # Rofi ssh
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -196,7 +190,14 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 #bar {
 #    status_command i3status
 #}
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+bindsym $mod+n exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+# read 1 character and go to the window with the character
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+# move everything from eDP-1 DP-1
+bindsym $mod+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py eDP-1 DP-1
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py DP-1 eDP-1
 
 # switch between the current and the previously focused one
 bindsym $mod+Tab workspace back_and_forth

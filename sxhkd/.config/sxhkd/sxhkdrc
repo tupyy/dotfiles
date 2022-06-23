@@ -69,10 +69,6 @@ super + d
 	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
 	bspc node --state \~$state
 
-# Toogle pseudo tiling of window
-super + p
-	bspc node --state \~pseudo_tiled
-
 #
 # move/resize
 #
@@ -94,10 +90,10 @@ super + alt + shift + {h,j,k,l}
 #############
 
 # Preselect the direction
-super + p ; super + {h,j,k,l}
+super + q ; super + {h,j,k,l}
     bspc node -p {west,south,north,east}
 # Cancel the preselection for the focused desktop
-super + p ; super + Escape
+super + q ; super + Escape
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
@@ -161,7 +157,7 @@ shift + {_,ctrl + ,alt + }Print
 ################
 
 # Run command
-super + d
+super + Escape
     rofi -show run
 # Terminal
 super + Return

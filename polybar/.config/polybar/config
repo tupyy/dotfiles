@@ -14,7 +14,7 @@ yellow = #d19a66
 monitor = ${env:MONITOR:}
 monitor-exact = true
 enable-ipc = true
-wm-restack = bspwm
+wm-restack = i3
 height = 30
 foreground = ${colors.foreground}
 background = ${colors.background}
@@ -22,9 +22,9 @@ font-0 = JetBrainsMono Font:style=Regular:size=14;2
 font-1 = "Iosevka Nerd Font:size=14;3"
 padding-right = 1
 module-margin = 2
-modules-left   = i3
+modules-left   = i3 
 modules-center = date
-modules-right  = ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
+modules-right  = system-fan-speed info-podman ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
 cursor-click = pointer
 tray-position = right
 
@@ -223,3 +223,13 @@ type = custom/script
 exec = /home/cosmin/.config/polybar/rofi-bluetooth --status
 interval = 1
 click-left = /home/cosmin/.config/polybar/rofi-bluetooth &
+
+[module/info-podman]
+type = custom/script
+exec = /home/cosmin/.config/polybar/polybar-scripts/polybar-scripts/info-podman/info-podman.sh
+interval = 60
+
+[module/system-fan-speed]
+type = custom/script
+exec = /home/cosmin/.config/polybar/polybar-scripts/polybar-scripts/system-fan-speed/system-fan-speed.sh
+interval = 10

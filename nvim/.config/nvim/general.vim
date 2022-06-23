@@ -138,6 +138,7 @@ au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
 au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
 au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.bu setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.bu set filetype=yaml
 au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.tsx setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.ts setlocal expandtab ts=2 sw=2
@@ -170,3 +171,19 @@ au BufWritePost *.json %!jq .
 
 let g:mergetool_layout = 'mr'
 let g:mergetool_prefer_revision = 'local'
+
+" disable ctrlp for bookmarks
+let g:bookmark_disable_ctrlp = 1
+command -nargs=+ DebugPodman :DlvExec ./bin/podman . <q-args> 
+
+" bookmarks
+nmap <Leader><Leader> <Plug>BookmarkToggle
+nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>a <Plug>BookmarkShowAll
+nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>k <Plug>BookmarkPrev
+nmap <Leader>c <Plug>BookmarkClear
+nmap <Leader>x <Plug>BookmarkClearAll
+nmap <Leader>kk <Plug>BookmarkMoveUp
+nmap <Leader>jj <Plug>BookmarkMoveDown
+nmap <Leader>g <Plug>BookmarkMoveToLine
