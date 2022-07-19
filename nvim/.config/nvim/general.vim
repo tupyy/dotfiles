@@ -152,6 +152,7 @@ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable 256 colors palette
 set t_Co=256
+highlight DiagnosticError ctermfg=Red  guifg=White
 
 " Use dracula theme
 syntax enable

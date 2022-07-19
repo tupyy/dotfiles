@@ -29,7 +29,20 @@ nmap <leader>ft :FloatermNew --height=0.8 --width=0.8 --wintype=float<CR>
 
 " LSP
 nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>'
+nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>
+nmap gD :lua vim.lsp.buf.declaration()<CR>
+nmap gd :lua vim.lsp.buf.definition()<CR>
+nmap K  :lua vim.lsp.buf.hover()<CR>
+nmap gi :lua vim.lsp.buf.implementation()<CR>
+nmap <C-k>: lua vim.lsp.buf.signature_help()<CR>
+nmap <space>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
+nmap <space>wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
+nmap <space>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+nmap <space>D  :lua vim.lsp.buf.type_definition()<CR>
+nmap <space>rn :lua vim.lsp.buf.rename()<CR>
+nmap <space>ca :lua vim.lsp.buf.code_action()<CR>
+nmap gr :lua vim.lsp.buf.references()<CR>
+nmap <space>f  :lua vim.lsp.buf.formatting()<CR>
 
 " Tagbar
 nmap <leader>tt :TagbarToggle<CR>
@@ -48,13 +61,6 @@ nnoremap <F5> :UndotreeToggle<CR>
 
 " UltiSnips
 map <leader>u :UltiSnipsEdit<CR>
-
-" Move to next ALE issue
-nmap <silent> <F2> <Plug>(ale_next_wrap)
-
-" Expand or shrink the current region
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
 
 " Source Vim
 nnoremap <leader>sv :source %<CR>
