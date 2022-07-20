@@ -154,11 +154,13 @@ click-right = pavucontrol
 [module/date]
 type = internal/date
 interval = 1
-label = %time% - %date%
+label =  %time%    %date%
 time     = %R
 date     = %a, %b %d
 time-alt = %T
 date-alt = %A, %B %d, %Y
+format =  <label>
+format-foreground = #bdeefc
 
 [module/search]
 type = custom/text
