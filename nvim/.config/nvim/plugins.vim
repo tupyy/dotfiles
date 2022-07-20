@@ -40,7 +40,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'glepnir/lspsaga.nvim'
 
 Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'

@@ -37,7 +37,7 @@ nmap gi :lua vim.lsp.buf.implementation()<CR>
 nmap <C-k>: lua vim.lsp.buf.signature_help()<CR>
 nmap <space>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
 nmap <space>wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
-nmap <space>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+nmap <space>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
 nmap <space>D  :lua vim.lsp.buf.type_definition()<CR>
 nmap <space>rn :lua vim.lsp.buf.rename()<CR>
 nmap <space>ca :lua vim.lsp.buf.code_action()<CR>

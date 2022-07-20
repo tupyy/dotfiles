@@ -23,7 +23,7 @@ font-1 = "Iosevka Nerd Font:size=14;3"
 padding-right = 1
 module-margin = 2
 modules-left   = i3 
-modules-center = date
+modules-center = player date weather_craiova weather_tls
 modules-right  = system-fan-speed info-podman ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
 cursor-click = pointer
 tray-position = right
@@ -226,10 +226,27 @@ click-left = /home/cosmin/.config/polybar/rofi-bluetooth &
 
 [module/info-podman]
 type = custom/script
-exec = /home/cosmin/.config/polybar/polybar-scripts/polybar-scripts/info-podman/info-podman.sh
+exec = /home/cosmin/.config/polybar/scripts/info-podman.sh
 interval = 60
 
 [module/system-fan-speed]
 type = custom/script
-exec = /home/cosmin/.config/polybar/polybar-scripts/polybar-scripts/system-fan-speed/system-fan-speed.sh
+exec = /home/cosmin/.config/polybar/scripts/system-fan-speed.sh
 interval = 10
+
+[module/weather_craiova]
+type = custom/script
+exec = /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Craiova"
+interval = 60
+
+[module/weather_tls]
+type = custom/script
+exec = /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Toulouse"
+interval = 60
+
+[module/player]
+type = custom/script
+exec = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py
+click-left = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py play-pause
+click-right = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py next
+interval = 5
