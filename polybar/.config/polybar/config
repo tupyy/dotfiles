@@ -238,12 +238,12 @@ interval = 10
 
 [module/weather_craiova]
 type = custom/script
-exec = /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Craiova"
+exec = OPENWEATHER_API=`cat /home/cosmin/.config/polybar/weather_api_key` /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Craiova"
 interval = 60
 
 [module/weather_tls]
 type = custom/script
-exec = /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Toulouse"
+exec = OPENWEATHER_API=`cat /home/cosmin/.config/polybar/weather_api_key` /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Toulouse"
 interval = 60
 
 [module/player]

@@ -4,3 +4,4 @@ nvim/.config/nvim/undodir/*
 **/*.swp
 vifm/.config/vifm/vifminfo.json
 bash/.bash_export
+polybar/.config/polybar/weather_api_key
