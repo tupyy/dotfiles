@@ -528,6 +528,8 @@ if args.command is None:
 else:
     player_manager = PlayerManager(filter_list = filter_list, block_mode = block_mode, connect = False)
     current_player = player_manager.getCurrentPlayer()
+    if not current_player:
+        print("")
     if args.command == 'play' and current_player:
         current_player.play()
     elif args.command == 'pause' and current_player:

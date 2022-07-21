@@ -240,15 +240,17 @@ interval = 10
 type = custom/script
 exec = OPENWEATHER_API=`cat /home/cosmin/.config/polybar/weather_api_key` /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Craiova"
 interval = 60
+format-foreground = #c8f7d6
 
 [module/weather_tls]
 type = custom/script
 exec = OPENWEATHER_API=`cat /home/cosmin/.config/polybar/weather_api_key` /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Toulouse"
 interval = 60
+format-foreground = #bdeefc
 
 [module/player]
 type = custom/script
-exec = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py
+exec = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py status
 click-left = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py play-pause
 click-right = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py next
 interval = 5
