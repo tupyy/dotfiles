@@ -240,7 +240,7 @@ interval = 10
 type = custom/script
 exec = OPENWEATHER_API=`cat /home/cosmin/.config/polybar/weather_api_key` /home/cosmin/.config/polybar/scripts/openweathermap-simple.sh "Craiova"
 interval = 60
-format-foreground = #c8f7d6
+format-foreground = #bdeefc
 
 [module/weather_tls]
 type = custom/script
