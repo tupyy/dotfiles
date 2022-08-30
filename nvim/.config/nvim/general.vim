@@ -121,7 +121,8 @@ set clipboard=unnamedplus
 set noswapfile          " no swap file
 set nobackup            " no backup
 set nowritebackup       " 
-
+"set hightlight DiagnosticError ctermfg=Red  guifg=White guibg=Black
+nnoremap <F4> :set hlsearch!<CR>
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -188,3 +189,5 @@ nmap <Leader>x <Plug>BookmarkClearAll
 nmap <Leader>kk <Plug>BookmarkMoveUp
 nmap <Leader>jj <Plug>BookmarkMoveDown
 nmap <Leader>g <Plug>BookmarkMoveToLine
+
+let g:vimspector_enable_mappings = 'HUMAN'

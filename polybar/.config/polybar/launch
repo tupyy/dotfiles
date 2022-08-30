@@ -10,5 +10,9 @@ export THERMAL="$(grep -Rl "x86_pkg_temp" /sys/class/thermal/thermal_zone*/type 
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --reload topbar >> $HOME/tmp/polybar-monitor_$m.log 2>&1 &
+    if [ $m == "eDP-1" ]; then
+        MONITOR=$m polybar --config=$HOME/.config/polybar/config_light --reload topbar >> $HOME/tmp/polybar-monitor_$m.log 2>&1 &
+    else
+        MONITOR=$m polybar --reload topbar >> $HOME/tmp/polybar-monitor_$m.log 2>&1 &
+    fi
 done

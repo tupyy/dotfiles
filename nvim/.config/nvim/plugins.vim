@@ -27,9 +27,10 @@ Plug 'samoshkin/vim-mergetool'
 
 " Jumping around files
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'lambdalisue/fern.vim'
+Plug 'LumaKernel/fern-mapping-fzf.vim'
+Plug 'lambdalisue/fern-bookmark.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
@@ -40,15 +41,18 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'jbyuki/one-small-step-for-vimkind'
 
 Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'
 " Debugging
+Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'Pocco81/DAPInstall.nvim'
 Plug 'nvim-telescope/telescope-ui-select.nvim'
+Plug 'j-hui/fidget.nvim'
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
@@ -58,7 +62,7 @@ Plug 'lervag/vimtex'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'fatih/vim-go'
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
@@ -94,8 +98,9 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'pedrohdz/vim-yaml-folds'
 Plug 'rhysd/clever-f.vim'
 Plug 'MattesGroeger/vim-bookmarks'
-
+Plug 'hrsh7th/nvim-pasta'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ojroques/nvim-bufdel'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => End Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

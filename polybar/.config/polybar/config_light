@@ -22,8 +22,8 @@ font-0 = JetBrainsMono Font:style=Regular:size=14;2
 font-1 = "Iosevka Nerd Font:size=14;3"
 padding-right = 1
 module-margin = 2
-modules-left   = i3 calendar
-modules-center = player date weather_craiova weather_tls
+modules-left   = i3 
+modules-center = player date
 modules-right  = system-fan-speed ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
 cursor-click = pointer
 tray-position = right
@@ -162,11 +162,6 @@ date-alt = %A, %B %d, %Y
 format =  <label>
 format-foreground = #bdeefc
 
-[module/date-boston]
-type = custom/script
-interval = 30
-exec = TZ='America/New_York' date +"Boston: %H:%M"
-
 [module/search]
 type = custom/text
 content = ""
@@ -231,6 +226,11 @@ exec = /home/cosmin/.config/polybar/rofi-bluetooth --status
 interval = 1
 click-left = /home/cosmin/.config/polybar/rofi-bluetooth &
 
+[module/info-podman]
+type = custom/script
+exec = /home/cosmin/.config/polybar/scripts/info-podman.sh
+interval = 60
+
 [module/system-fan-speed]
 type = custom/script
 exec = /home/cosmin/.config/polybar/scripts/system-fan-speed.sh
@@ -254,11 +254,3 @@ exec = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py status
 click-left = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py play-pause
 click-right = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py next
 interval = 5
-
-[module/calendar]
-type = custom/script
-exec = /home/cosmin/dotfiles/scripts/calendar.lua
-label =  %output%
-format =  <label>
-format-foreground = #bdeefc
-interval = 60

@@ -8,8 +8,8 @@ local util = require 'lspconfig/util'
 
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
@@ -87,4 +87,31 @@ end
 
 
 require('rust-tools').setup({})
+require"fidget".setup{}
+
+-- lua setup
+local dap = require"dap"
+dap.configurations.lua = { 
+  { 
+    type = 'nlua', 
+    request = 'attach',
+    name = "Attach to running Neovim instance",
+    host = function()
+      local value = vim.fn.input('Host [127.0.0.1]: ')
+      if value ~= "" then
+        return value
+      end
+      return '127.0.0.1'
+    end,
+    port = function()
+      local val = tonumber(vim.fn.input('Port: '))
+      assert(val, "Please provide a port number")
+      return val
+    end,
+  }
+}
+
+dap.adapters.nlua = function(callback, config)
+  callback({ type = 'server', host = config.host, port = config.port })
+end
 EOF

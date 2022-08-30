@@ -28,11 +28,9 @@ nmap <C-h> :Files<CR>
 nmap <leader>ft :FloatermNew --height=0.8 --width=0.8 --wintype=float<CR>
 
 " LSP
-nmap <leader>p :lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <leader>n :lua vim.lsp.diagnostic.goto_next()<CR>
 nmap gD :lua vim.lsp.buf.declaration()<CR>
 nmap gd :lua vim.lsp.buf.definition()<CR>
-nmap K  :lua vim.lsp.buf.hover()<CR>
+nmap <leader>k  :lua vim.lsp.buf.hover()<CR>
 nmap gi :lua vim.lsp.buf.implementation()<CR>
 nmap <C-k>: lua vim.lsp.buf.signature_help()<CR>
 nmap <space>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
@@ -87,6 +85,10 @@ imap <F7> <esc>:DlvDebug<CR>
 vmap <F7> <esc>:DlvDebug<CR>
 nmap <F7> :DlvDebug<CR>
 
+imap <F6> <esc>:DlvTest<CR>
+vmap <F6> <esc>:DlvTest<CR>
+nmap <F6> :DlvTest<CR>
+
 " F2 to save
 imap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
 nmap <F2> <esc>:w<CR>:echo expand("%f") . " saved."<CR>
@@ -99,9 +101,15 @@ vmap <F3> <esc>:w<CR>:BufOnly!<CR>
 
 " Term
 " Toggle terminal on/off (neovim)
-nnoremap <A-t> :call TermToggle(30)<CR>
-inoremap <A-t> <Esc>:call TermToggle(30)<CR>
-tnoremap <A-t> <C-\><C-n>:call TermToggle(30)<CR>
+nnoremap <A-t>:term<CR>
+inoremap <A-t> <Esc>:term<CR>
+tnoremap <A-t> <C-\><C-n>:term<CR>
+nnoremap <leader>vt :vsplit term://zsh<CR>
+inoremap <leader>vt <Esc>:vsplit term://zsh<CR>
+tnoremap <leader>vt <C-\><C-n>:vsplit term://zsh<CR>
+nnoremap <leader>ht :split term://zsh<CR>
+inoremap <leader>ht <Esc>:split term://zsh<CR>
+tnoremap <leader>ht <C-\><C-n>:split term://zsh<CR>
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
@@ -117,3 +125,9 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+nmap <leader>rr <Plug>VimspectorReset
