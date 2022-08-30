@@ -1,20 +1,21 @@
 #!/bin/bash
 
-offset=$(($1+500))
+cmd=$2
+offset=$(($1+550))
 colID='${goto '"$offset"'}'
 colImage='${goto '"$(($offset+140))"'}'
-colName='${goto '"$(($offset+440))"'}'
-colNetwork='${goto '"$(($offset+668))"'}'
-colPorts='${goto '"$(($offset+900))"'}'
-colState='${goto '"$(($offset+1150))"'}'
-red='${color #fc6c71}'
+colName='${goto '"$(($offset+540))"'}'
+colNetwork='${goto '"$(($offset+768))"'}'
+colPorts='${goto '"$(($offset+1000))"'}'
+colState='${goto '"$(($offset+1200))"'}'
+white='${color white}'
 black='${color black}'
 green='${color green}'
 
 # the next line is configurable
-tmp="$HOME/tmp/conky.docker.sh" # choose a temporary file, preferably in a tmpfs
+tmp="$HOME/tmp/conky.docker_${cmd}.sh" # choose a temporary file, preferably in a tmpfs
 
-docker ps -a --format "{{.ID}}|{{.Image}}|{{.Names}}|{{.Networks}}|{{.Ports}}|{{.State}}" |
+${cmd} ps -a --format "{{.ID}}|{{.Image}}|{{.Names}}|{{.Networks}}|{{.Ports}}|{{.State}}" |
 awk '
     BEGIN {
     FS="|"
@@ -27,11 +28,11 @@ awk '
     $2 !~ /^docker/ {
         line=format_line($1,$2,$3,$4,$5,$6)
     }
-    $6 ~ /running/ {
+    $6 ~ /running|[Uu]p*/ {
         printf "'"$green"'%s'"$black"'",line
     }
-    $6 !~ /running/ {
-        printf "'"$red"'%s'"$black"'",line
+    $6 !~ /running|[Uu]p*/ {
+        printf "'"$white"'%s'"$black"'",line
     }
 
 function format_line(id,image,names,networks,ports,state) {
