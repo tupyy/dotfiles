@@ -1,5 +1,5 @@
 set $mod Mod4
-set $term --no-startup-id urxvt 
+set $term --no-startup-id alacritty
 
 # class                 border  backgr. text    indicator child_border
 set $bd-color #E5F26E
@@ -20,6 +20,7 @@ font pango:monospace 13
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
 
 exec --no-startup-id i3-workscreen
+exec --no-startup-id feh --bg-scale $HOME/Pictures/sheng.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -35,7 +36,7 @@ exec --no-startup-id volumeicon
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -196,8 +197,8 @@ bindsym $mod+n exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 # move everything from eDP-1 DP-1
-bindsym $mod+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py eDP-1 DP-1
-bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py DP-1 eDP-1
+bindsym $mod+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py DP-3-1-5 eDP-1
+bindsym $mod+Shift+x exec --no-startup-id $HOME/.config/i3/scripts/switch-outputs.py eDP-1 DP-3-1-5
 
 # switch between the current and the previously focused one
 bindsym $mod+Tab workspace back_and_forth
@@ -215,13 +216,17 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+u [instance="__scratchpad"] scratchpad show; [instance="__scratchpad"] move position center
 for_window [instance="__scratchpad"] move scratchpad 
 for_window [instance="__scratchpad"] resize set 2400 1600
-exec --no-startup-id urxvt -name "__scratchpad" -pe tabbed
+exec --no-startup-id alacritty --instance "__scratchpad"
+
+bindsym $mod+i [instance="__scratchpad_small"] scratchpad show; [instance="__scratchpad_small"] move position center
+for_window [instance="__scratchpad_small"] move scratchpad 
+for_window [instance="__scratchpad_small"] resize set 1400 1000
+exec --no-startup-id alacritty --instance "__scratchpad_small"
 
 #file manager
-bindsym $mod+a [instance="vifm"] scratchpad show; [instance="vifm"] move position center
-bindsym $mod+Ctrl+a exec --no-startup-id urxvt -name "vifm" -e vifm
-for_window [instance="vifm"] move scratchpad
-for_window [instance="vifm"] resize set 2400 1600
+bindsym $mod+a [class="Spotify"] scratchpad show; [class="Spotify"] move position center
+for_window [class="Spotify"] move scratchpad
+for_window [class="Spotify"] resize set 2400 1600
 
 for_window [class="^.*"] border pixel 1
 #gaps inner 4
@@ -232,4 +237,4 @@ for_window [class="Conky"] floating enable
 exec_always --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --history 2
 bindsym $mod1+Tab exec --no-startup-id i3-cycle-focus.py --switch
 
-# exec --no-startup-id /usr/bin/conky -c $HOME/.config/conky/conky.conf
+ exec --no-startup-id /usr/bin/conky -c $HOME/.config/conky/conky.conf
