@@ -46,7 +46,7 @@ nmap <space>f  :lua vim.lsp.buf.formatting()<CR>
 nmap <leader>tt :TagbarToggle<CR>
 
 " Close window
-nmap <leader>cw :close<CR>
+nmap <leader>c :close<CR>
 
 " Shot todos
 noremap <Leader>r :noautocmd vimgrep /TODO/j **/*.go<CR>:cw<CR>
@@ -64,8 +64,8 @@ map <leader>u :UltiSnipsEdit<CR>
 nnoremap <leader>sv :source %<CR>
 
 " Change tab with <Tab>
-:map <Tab> :bnext <cr>
-:map <S-Tab> :bprev <cr>
+" :map <Tab> :bnext <cr>
+" :map <S-Tab> :bprev <cr>
 
 "snippets
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -131,3 +131,61 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
 nmap <leader>rr <Plug>VimspectorReset
+
+" Baber tab management
+" Move to previous/next
+nnoremap <silent>    <S-Tab> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <Tab> <Cmd>BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
+nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-&> <Cmd>BufferGoto 1<CR>
+nnoremap <silent>    <A-é> <Cmd>BufferGoto 2<CR>
+nnoremap <silent>    <A-"> <Cmd>BufferGoto 3<CR>
+nnoremap <silent>    <A-'> <Cmd>BufferGoto 4<CR>
+nnoremap <silent>    <A-(> <Cmd>BufferGoto 5<CR>
+nnoremap <silent>    <A--> <Cmd>BufferGoto 6<CR>
+nnoremap <silent>    <A-è> <Cmd>BufferGoto 7<CR>
+nnoremap <silent>    <A-_> <Cmd>BufferGoto 8<CR>
+nnoremap <silent>    <A-ç> <Cmd>BufferGoto 9<CR>
+nnoremap <silent>    <A-à> <Cmd>BufferLast<CR>
+" Pin/unpin buffer
+nnoremap <silent>    <A-p> <Cmd>BufferPin<CR>
+" Close buffer
+nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
+nnoremap <silent>	<A-v> <Cmd>BufferCloseAllButCurrent<CR>
+" Wipeout buffer
+"                          :BufferWipeout
+" Close commands
+"                          :BufferCloseAllButCurrent
+"                          :BufferCloseAllButVisible
+"                          :BufferCloseAllButPinned
+"                          :BufferCloseAllButCurrentOrPinned
+"                          :BufferCloseBuffersLeft
+"                          :BufferCloseBuffersRight
+" Sort automatically by...
+nnoremap <silent> <Space>bb <Cmd>BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd <Cmd>BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl <Cmd>BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw <Cmd>BufferOrderByWindowNumber<CR>
+
+"goto -preview
+nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>
+nnoremap gpt <cmd>lua require('goto-preview').goto_preview_type_definition()<CR>
+nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
+nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>
+" Only set if you have telescope installed
+nnoremap gpr <cmd>lua require('goto-preview').goto_preview_references()<CR>
+
+" bookmarks
+nmap <Leader><Leader> <Plug>BookmarkToggle
+nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>a <Plug>BookmarkShowAll
+nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>k <Plug>BookmarkPrev
+nmap <Leader>c <Plug>BookmarkClear
+nmap <Leader>x <Plug>BookmarkClearAll
+nmap <Leader>kk <Plug>BookmarkMoveUp
+nmap <Leader>jj <Plug>BookmarkMoveDown
+nmap <Leader>g <Plug>BookmarkMoveToLine

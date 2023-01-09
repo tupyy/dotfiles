@@ -14,17 +14,17 @@ yellow = #d19a66
 monitor = ${env:MONITOR:}
 monitor-exact = true
 enable-ipc = true
-wm-restack = i3
+wm-restack = i3 calendar
 height = 30
 foreground = ${colors.foreground}
 background = ${colors.background}
-font-0 = JetBrainsMono Font:style=Regular:size=14;2
+font-0 = JetBrainsMono Nerd Font:style=Regular:size=14;2
 font-1 = "Iosevka Nerd Font:size=14;3"
 padding-right = 1
 module-margin = 2
-modules-left   = i3 
-modules-center = player date
-modules-right  = system-fan-speed ethernet wlan vpn bluetooth cpu temperature memory battery filesystem 
+modules-left   = i3 calendar 
+modules-center = date
+modules-right  = system-fan-speed ethernet wlan vpn bluetooth battery cpu temperature memory filesystem 
 cursor-click = pointer
 tray-position = right
 
@@ -254,3 +254,11 @@ exec = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py status
 click-left = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py play-pause
 click-right = /home/cosmin/.config/polybar/scripts/player-mpris-tail.py next
 interval = 5
+
+[module/calendar]
+type = custom/script
+exec = /home/cosmin/dotfiles/scripts/calendar.lua
+label =  %output%
+format =  <label>
+format-foreground = #bdeefc
+interval = 60

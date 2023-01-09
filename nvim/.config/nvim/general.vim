@@ -178,16 +178,4 @@ let g:mergetool_prefer_revision = 'local'
 let g:bookmark_disable_ctrlp = 1
 command -nargs=+ DebugPodman :DlvExec ./bin/podman . <q-args> 
 
-" bookmarks
-nmap <Leader><Leader> <Plug>BookmarkToggle
-nmap <Leader>i <Plug>BookmarkAnnotate
-nmap <Leader>a <Plug>BookmarkShowAll
-nmap <Leader>j <Plug>BookmarkNext
-nmap <Leader>k <Plug>BookmarkPrev
-nmap <Leader>c <Plug>BookmarkClear
-nmap <Leader>x <Plug>BookmarkClearAll
-nmap <Leader>kk <Plug>BookmarkMoveUp
-nmap <Leader>jj <Plug>BookmarkMoveDown
-nmap <Leader>g <Plug>BookmarkMoveToLine
-
 let g:vimspector_enable_mappings = 'HUMAN'

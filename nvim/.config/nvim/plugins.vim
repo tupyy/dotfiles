@@ -35,16 +35,16 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 " Development
 Plug 'neovim/nvim-lspconfig'
-
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'jbyuki/one-small-step-for-vimkind'
-
 Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 " Debugging
 Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
@@ -62,7 +62,7 @@ Plug 'lervag/vimtex'
 Plug 'sebdah/vim-delve'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'fatih/vim-go'
-"Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
@@ -80,7 +80,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'henrik/vim-indexed-search'
 Plug 'chrisbra/csv.vim'
-Plug 'vim-utils/vim-man'
 Plug 'christoomey/vim-system-copy'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
@@ -101,6 +100,13 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'hrsh7th/nvim-pasta'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ojroques/nvim-bufdel'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'rmagatti/goto-preview'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+" optional for icon support
+Plug 'kyazdani42/nvim-web-devicons'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => End Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

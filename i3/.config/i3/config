@@ -1,5 +1,6 @@
 set $mod Mod4
 set $term --no-startup-id alacritty
+set $term1 --no-startup-id alacritty --config-file $HOME/.config/alacritty/alacritty_alt_font.yml
 
 # class                 border  backgr. text    indicator child_border
 set $bd-color #E5F26E
@@ -18,9 +19,8 @@ font pango:monospace 13
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
-
+exec --no-startup-id xrandr --output DP-3-1-5 --rotate left
 exec --no-startup-id i3-workscreen
-exec --no-startup-id feh --bg-scale $HOME/Pictures/sheng.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -37,6 +37,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec $term
+bindsym $mod+Ctrl+Return exec $term1
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -52,7 +53,7 @@ bindsym $mod+Shift+d exec dmenu_run
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $mod+o focus up
 bindsym $mod+m focus right
 
 # alternatively, you can use the cursor keys:
@@ -84,7 +85,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
+bindsym $mod+l layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -170,10 +171,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec --no-startup-id xrandr --output HDMI-0 --right-of DVI-0
 exec --no-startup-id xset r rate 200 20
 exec --no-startup-id xset s noblank
-exec --no-startup-id nitrogen --restore
 
 bindsym $mod+Ctrl+g exec --no-startup-id gnome-screenshot -i
 
@@ -186,6 +185,7 @@ bindsym $mod+Print exec gnome-screenshot -i
 # Rofi ssh
 bindsym $mod+Shift+s exec --no-startup-id rofi -show ssh
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+Ctrl+d exec --no-startup-id ulauncher
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #bar {
@@ -216,17 +216,21 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+u [instance="__scratchpad"] scratchpad show; [instance="__scratchpad"] move position center
 for_window [instance="__scratchpad"] move scratchpad 
 for_window [instance="__scratchpad"] resize set 2400 1600
-exec --no-startup-id alacritty --instance "__scratchpad"
+exec --no-startup-id alacritty --class "__scratchpad" -e tmux 
 
-bindsym $mod+i [instance="__scratchpad_small"] scratchpad show; [instance="__scratchpad_small"] move position center
-for_window [instance="__scratchpad_small"] move scratchpad 
-for_window [instance="__scratchpad_small"] resize set 1400 1000
-exec --no-startup-id alacritty --instance "__scratchpad_small"
+bindsym $mod+i [instance="scratchpad2"] scratchpad show; [instance="scratchpad2"] move position center
+for_window [instance="scratchpad2"] move scratchpad 
+for_window [instance="scratchpad2"] resize set 1400 1000
+exec --no-startup-id alacritty --class "scratchpad2" -e tmux 
 
 #file manager
 bindsym $mod+a [class="Spotify"] scratchpad show; [class="Spotify"] move position center
 for_window [class="Spotify"] move scratchpad
 for_window [class="Spotify"] resize set 2400 1600
+
+bindsym $mod+z [class="Pavucontrol"] scratchpad show; [class="Pavucontrol"] move position center
+for_window [class="Pavucontrol"] move scratchpad
+for_window [class="Pavucontrol"] resize set 1400 1000
 
 for_window [class="^.*"] border pixel 1
 #gaps inner 4
@@ -237,4 +241,4 @@ for_window [class="Conky"] floating enable
 exec_always --no-startup-id $HOME/.config/i3/scripts/i3-cycle-focus.py --history 2
 bindsym $mod1+Tab exec --no-startup-id i3-cycle-focus.py --switch
 
- exec --no-startup-id /usr/bin/conky -c $HOME/.config/conky/conky.conf
+exec --no-startup-id /usr/bin/conky -c $HOME/.config/conky/conky.conf
