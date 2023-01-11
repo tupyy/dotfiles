@@ -5,3 +5,5 @@ nvim/.config/nvim/undodir/*
 vifm/.config/vifm/vifminfo.json
 bash/.bash_export
 polybar/.config/polybar/weather_api_key
+conky/.config/conky/.editorconfig
+i3/.config/i3/config.save
