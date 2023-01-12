@@ -14,17 +14,17 @@ local columns_offset = {
     image = {
         key = "image";
         header = "Image";
-        offset = 140
+        offset = 180
     };
     name = {
         key = "name";
         header = "Name";
-        offset = 730;
+        offset = 640;
     };
     ports = {
         key = "ports";
         header = "Ports";
-        offset = 1000;
+        offset = 880;
     };
     state = {
         key = "state";
@@ -84,7 +84,17 @@ local function format_conky_table(x, columns_offset, results)
             local column = columns_offset[k]
             if (column ~= nil) then
                 if column.key == "id" or column.key == "name" then
-                    v = string.sub(v, 0, 12)
+                    v = string.sub(v, 0, 15)
+                elseif column.key == "ports" then
+                  local ports = "";
+                  for i,port in ipairs(v) do
+                    if i == 1 then
+                      ports = string.format("%s:%s", port.container_port, port.host_port)
+                    else
+                      ports = ports .. "," .. string.format("%s:%s", port.container_port, port.host_port)
+                    end
+                  end
+                  v = ports;
                 end
                 line = string.format("%s%s%s", line, format_output(x, column.offset), v)
             end
