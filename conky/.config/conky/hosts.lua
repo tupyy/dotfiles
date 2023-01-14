@@ -21,6 +21,18 @@ local function memory_query(node, job)
   return string.format("((%s - %s -%s) / (%s)) * 100", totalMem,freeMem, cachedMem, totalMem);
 end
 
+local function rootfs_query(node, job)
+  local avail_bytes = string.format("node_filesystem_avail_bytes{instance=\"%s\",job=\"%s\",mountpoint=\"/\",fstype!=\"rootfs\"}", node, job)
+  local total = string.format("node_filesystem_size_bytes{instance=\"%s\",job=\"%s\",mountpoint=\"/\",fstype!=\"rootfs\"}", node, job);
+  return string.format("100 - ((%s * 100) / %s)", avail_bytes, total);
+end
+
+local function datafs_query(node, job)
+  local avail_bytes = string.format("node_filesystem_avail_bytes{instance=\"%s\",job=\"%s\",mountpoint=\"/data\",fstype!=\"rootfs\"}", node, job)
+  local total = string.format("node_filesystem_size_bytes{instance=\"%s\",job=\"%s\",mountpoint=\"/data\",fstype!=\"rootfs\"}", node, job);
+  return string.format("100 - ((%s * 100) / %s)", avail_bytes, total);
+end
+
 local function create_curl_req(query)
   return "curl -s --data-urlencode 'query=" .. query .. "' http://localhost:7090/api/v1/query"
 end
@@ -51,9 +63,27 @@ local columns_def = {
       end
     };
     [4] = {
+      key = "rootfs";
+      header = "RootFS Used";
+      offset = 380;
+      transform = function (value)
+        local data = tonumber(value)
+        return string.format("%.2f%%", data);
+      end
+    };
+    [5] = {
+      key = "datafs";
+      header = "DataFS Used";
+      offset = 550;
+      transform = function (value)
+        local data = tonumber(value)
+        return string.format("%.2f%%", data);
+      end
+    };
+    [6] = {
       key = "uptime";
       header = "Uptime";
-      offset = 380;
+      offset = 710;
       transform = function (value)
         local uptime = tonumber(value)
         return string.format("%.1f hours", uptime/3600)
@@ -114,12 +144,16 @@ for i = 1,#jobs, 1 do
   local cpu = extract_data(exec(create_curl_req(cpu_query(node, job))))
   local uptime = extract_data(exec(create_curl_req(uptime_query(node, job))))
   local memory = extract_data(exec(create_curl_req(memory_query(node, job))))
+  local rootfs = extract_data(exec(create_curl_req(rootfs_query(node, job))))
+  local datafs = extract_data(exec(create_curl_req(datafs_query(node, job))))
 
   data[#data+1] = {
     host = job;
     cpu = cpu[1].value;
     uptime = uptime[1].value;
     memory = memory[1].value;
+    rootfs = rootfs[1].value;
+    datafs = datafs[1].value;
   }
 end
 
