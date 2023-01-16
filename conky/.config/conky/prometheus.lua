@@ -3,7 +3,7 @@
 require 'luarocks.loader'
 local lunajson = require 'lunajson'
 
-local podman_query="sum by (name) (podman_container_info*on(id) group_right(name) podman_container_state)";
+local podman_query="sum by (name,ports) (podman_container_info*on(id) group_right(name,ports) podman_container_state)";
 local curl="curl -s --data-urlencode 'query=" .. podman_query .. "' http://localhost:7090/api/v1/query";
 
 local x = 550;
@@ -13,10 +13,20 @@ local columns_def = {
         header = "Name";
         offset = 0;
     };
+    ports = {
+      key = "ports";
+      header= "Ports";
+      offset = 300;
+      transform = function (value)
+        value=value:gsub("0%.0%.0%.0:", "")
+        value=value:gsub("/tcp", "")
+        return value
+      end
+    };
     state = {
         key = "state";
         header = "State";
-        offset = 300;
+        offset = 650;
     };
 }
 
@@ -75,6 +85,7 @@ local function parse(output)
   for _,c in pairs(data["data"]["result"]) do
     output[#output+1] = {
       name = c["metric"]["name"];
+      ports = c["metric"]["ports"];
       state = state_def[c["value"][2]]
     }
   end
@@ -95,6 +106,7 @@ local function format_conky_table(initial_offset, columns, results)
     for _, r in ipairs(results) do
         local line = r.state.color;
         line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.name.offset), string.sub(r.name,0,20));
+        line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.ports.offset), columns_def.ports.transform(r.ports));
         line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.state.offset), r.state.value);
         table_string = string.format("%s\n%s${color white}", table_string, line)
     end

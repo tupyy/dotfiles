@@ -89,7 +89,7 @@ local function format_conky_table(x, columns_offset, results)
                   local ports = "";
                   for i,port in ipairs(v) do
                     if i == 1 then
-                      ports = string.format("%s:%s", port.container_port, port.host_port)
+                      ports = string.format("%s->%s", port.host_port, port.container_port)
                     else
                       ports = ports .. "," .. string.format("%s:%s", port.container_port, port.host_port)
                     end
