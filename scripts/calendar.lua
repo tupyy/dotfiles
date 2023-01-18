@@ -26,7 +26,7 @@ local function parse(events)
         if (json[i].date ~= "") then
             r[#r + 1] = {
                 date = luatz.parse.rfc_3339(json[i].date);
-                summary = json[i].summary;
+                summary = string.sub(json[i].summary,0, 30);
             }
         end
     end

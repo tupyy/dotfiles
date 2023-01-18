@@ -3,8 +3,12 @@
 require 'luarocks.loader'
 local lunajson = require 'lunajson'
 
-local nodes= {"fedorasrv:9100"}
-local jobs= {"fedorasrv"}
+local hosts = {
+  [1] = {
+    node = "fedorasrv:9100";
+    job = "fedorasrv"
+  };
+}
 
 local function uptime_query(node, job)
   return string.format("node_time_seconds{instance=\"%s\",job=\"%s\"} - node_boot_time_seconds{instance=\"%s\",job=\"%s\"}",node,job, node, job);
@@ -105,9 +109,7 @@ local function extract_data(output)
   local data = lunajson.decode(output)
   output = {}
   for _,c in pairs(data["data"]["result"]) do
-    output[#output+1] = {
-      value = c["value"][2]
-    }
+    table.insert(output, { value = c["value"][2] })
   end
   return output
 end
@@ -138,9 +140,9 @@ local function format_conky_table(initial_offset, columns, data)
 end
 
 local data = {}
-for i = 1,#jobs, 1 do
-  local node = nodes[i]
-  local job = jobs[i]
+for _, v in pairs(hosts) do
+  local node = v.node
+  local job = v.job
   local cpu = extract_data(exec(create_curl_req(cpu_query(node, job))))
   local uptime = extract_data(exec(create_curl_req(uptime_query(node, job))))
   local memory = extract_data(exec(create_curl_req(memory_query(node, job))))
