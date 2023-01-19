@@ -417,7 +417,7 @@ class Player:
                 text = re.sub(r'􏿿p􏿿(.*?)􏿿p􏿿(.*?)􏿿p􏿿(.*?)􏿿p􏿿', r'%{\1}\2%{\3}', text.format_map(CleanSafeDict(**metadata)))
             except:
                 print("Invalid format string")
-            self._print(text)
+            self._print(text[:60])
         else:
             self._print(ICON_STOPPED)
 
