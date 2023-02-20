@@ -3,8 +3,8 @@
 require 'luarocks.loader'
 local lunajson = require 'lunajson'
 
-local podman_query="sum by (name,ports) (podman_container_info*on(id) group_right(name,ports) podman_container_state)";
-local curl="curl -s --data-urlencode 'query=" .. podman_query .. "' http://localhost:7090/api/v1/query";
+local podman_query="sum by (name,ports,instance) (podman_container_info*on(id) group_right(name,ports,instance) podman_container_state)";
+local curl="curl -s --data-urlencode 'query=" .. podman_query .. "' http://fedorasrv2:7090/api/v1/query";
 
 local x = 550;
 local columns_def = {
@@ -13,10 +13,22 @@ local columns_def = {
         header = "Name";
         offset = 0;
     };
+    host = {
+      key = "host";
+      header = "Host";
+      offset = 200;
+      transform = function(value)
+        local host = string.gsub(value, ":%d+", "")
+        if (host == "localhost") then
+          return "fedorasrv2"
+        end
+        return host
+      end
+    };
     ports = {
       key = "ports";
       header= "Ports";
-      offset = 300;
+      offset = 350;
       transform = function (value)
         value=value:gsub("0%.0%.0%.0:", "")
         value=value:gsub("/tcp", "")
@@ -83,9 +95,19 @@ local function parse(output)
   local data = lunajson.decode(output)
   output = {}
   for _,c in pairs(data["data"]["result"]) do
+    local getBaseID = function(c)
+      local host = c["metric"]["instance"]
+      if (host:match("fedorasrv")) then
+        return 0
+      else 
+        return 100
+      end
+    end
     output[#output+1] = {
+      id = getBaseID(c) + #output+1;
       name = c["metric"]["name"];
       ports = c["metric"]["ports"];
+      host = c["metric"]["instance"];
       state = state_def[c["value"][2]]
     }
   end
@@ -102,13 +124,16 @@ local function format_conky_table(initial_offset, columns, results)
         header = string.format("%s%s%s", header, format_output(initial_offset, c.offset), c.header)
     end
 
+    table.sort(results, function(a,b) return a.id < b.id end)
+
     local table_string = string.format("%s", header)
-    for _, r in ipairs(results) do
-        local line = r.state.color;
-        line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.name.offset), string.sub(r.name,0,20));
-        line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.ports.offset), columns_def.ports.transform(r.ports));
-        line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.state.offset), r.state.value);
-        table_string = string.format("%s\n%s${color white}", table_string, line)
+    for _, r in pairs(results) do
+          local line = r.state.color;
+          line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.name.offset), string.sub(r.name,0,20));
+          line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.host.offset), columns_def.host.transform(r.host));
+          line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.ports.offset), columns_def.ports.transform(r.ports));
+          line = string.format("%s%s%s", line, format_output(initial_offset, columns_def.state.offset), r.state.value);
+          table_string = string.format("%s\n%s${color white}", table_string, line)
     end
     return table_string
 end

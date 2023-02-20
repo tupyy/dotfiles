@@ -7,6 +7,10 @@ local hosts = {
   [1] = {
     node = "fedorasrv:9100";
     job = "fedorasrv"
+  },
+  [2] = {
+    node = "localhost:9100";
+    job = "fedorasrv2"
   };
 }
 
@@ -38,7 +42,7 @@ local function datafs_query(node, job)
 end
 
 local function create_curl_req(query)
-  return "curl -s --data-urlencode 'query=" .. query .. "' http://localhost:7090/api/v1/query"
+  return "curl -s --data-urlencode 'query=" .. query .. "' http://fedorasrv2:7090/api/v1/query"
 end
 
 local x = 550;
@@ -47,6 +51,9 @@ local columns_def = {
         key = "host";
         header = "Host";
         offset = 0;
+        transform = function(value)
+          return string.gsub(value, ":(%d+)", "")
+        end
     };
     [2] = {
         key = "cpu";
@@ -129,10 +136,12 @@ local function format_conky_table(initial_offset, columns, data)
         local line = "";
         for _, column in ipairs(columns_def) do
           local value = row[column.key];
-          if (column.transform ~= nil) then
-            value = column.transform(value)
+          if (value ~= nil) then
+            if (column.transform ~= nil) then
+              value = column.transform(value)
+            end
+            line = string.format("%s%s%s", line, format_output(initial_offset, column.offset), value);
           end
-          line = string.format("%s%s%s", line, format_output(initial_offset, column.offset), value);
         end
         table_string = string.format("%s\n%s", table_string, line)
     end
@@ -140,6 +149,14 @@ local function format_conky_table(initial_offset, columns, data)
 end
 
 local data = {}
+local getData = function(data) 
+  if (#data > 0) then
+    return data[1].value
+  else
+    return nil
+  end
+end
+
 for _, v in pairs(hosts) do
   local node = v.node
   local job = v.job
@@ -149,14 +166,14 @@ for _, v in pairs(hosts) do
   local rootfs = extract_data(exec(create_curl_req(rootfs_query(node, job))))
   local datafs = extract_data(exec(create_curl_req(datafs_query(node, job))))
 
-  data[#data+1] = {
-    host = job;
-    cpu = cpu[1].value;
-    uptime = uptime[1].value;
-    memory = memory[1].value;
-    rootfs = rootfs[1].value;
-    datafs = datafs[1].value;
-  }
+    data[#data+1] = {
+      host = job;
+      cpu = getData(cpu);
+      uptime = getData(uptime);
+      memory = getData(memory);
+      rootfs = getData(rootfs);
+      datafs = getData(datafs);
+    }
 end
 
 print(format_conky_table(x, columns_def, data))
