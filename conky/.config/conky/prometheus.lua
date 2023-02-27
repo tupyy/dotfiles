@@ -16,7 +16,7 @@ local columns_def = {
     host = {
       key = "host";
       header = "Host";
-      offset = 200;
+      offset = 250;
       transform = function(value)
         local host = string.gsub(value, ":%d+", "")
         if (host == "localhost") then
@@ -28,7 +28,7 @@ local columns_def = {
     ports = {
       key = "ports";
       header= "Ports";
-      offset = 350;
+      offset = 400;
       transform = function (value)
         value=value:gsub("0%.0%.0%.0:", "")
         value=value:gsub("/tcp", "")
@@ -38,7 +38,7 @@ local columns_def = {
     state = {
         key = "state";
         header = "State";
-        offset = 650;
+        offset = 700;
     };
 }
 

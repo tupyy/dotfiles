@@ -1,95 +1,156 @@
 configuration {
+    modi: "window,run,drun";
+    font: "Fira Code Medium 12";
     show-icons: true;
-    icon-theme: "Tela-dark";
-    font: "Iosevka Nerd Font 14";
-    display-drun: "";
-    drun-display-format: "{name}";
+    icon-theme: "Papirus-Light";
 }
 
+//  https://www.w3schools.com/colors/colors_converter.asp
 * {
-    background-color: transparent;
-    background: #1F2430;
-    background-alt: #E5E9F047;
-    text-color: #D8DEE9;
-    selected-text-color: #000000;
-    primary: #A3BE8C;
-    urgent: #BF616A;
-}
+    background:                  #eceff4;
+    foreground:                  #2e3440;
 
+    background-color:            #eceff4;
+
+    normal-background:           #eceff4;
+    normal-foreground:           var(foreground);
+    
+    selected-normal-foreground:  #4c566a;
+    selected-normal-background:  #88c0d0;
+
+    active-foreground:           #eceff4; 
+    alternate-normal-background: #d8dee9;
+    alternate-normal-foreground: var(foreground);
+    
+    separatorcolor:              #2e3440;
+    border-color:                #2e3440;
+
+    // misc
+    selected-active-foreground:  #bf616a;
+    lightfg:                     #586875;
+    urgent-foreground:           #dcdccc;
+    alternate-urgent-background: #7c4343;
+    lightbg:                     #eee8d5;
+    spacing:                     2;
+    alternate-active-background: #366060;
+    urgent-background:           #8c5353;
+    selected-active-background:  #5c888b;
+    active-background:           #4c7073;
+    alternate-active-foreground: var(active-foreground);
+    selected-urgent-background:  #9c6363;
+    selected-urgent-foreground:  #ffffef;
+    alternate-urgent-foreground: var(urgent-foreground);
+
+}
 window {
-    transparency: "real";
-    background-color: @background;
+    padding:          5;
+    background-color: var(background);
+    border:           1;
 }
-
-inputbar {
-    background-color: #ffffff20;
-    text-color: @foreground;
-    border-radius: 12;
-    padding: 1.3%;
-    margin: 5% 30%;
-}
-
-prompt {
-    enabled: true;
-    margin: 0 1% 0 0;
-}
-
-entry {
-    font: "SF Pro Display 14";
-    placeholder-color: #999999;
-    placeholder: "Search Applications";
-    blink: true;
-}
-
-
 mainbox {
-    children: [ inputbar, listview ];
-    padding: 5%;
+    padding: 0;
+    border:  0;
 }
-
+message {
+    padding:      1px ;
+    border-color: var(separatorcolor);
+    border:       2px dash 0px 0px ;
+}
+textbox {
+    text-color: var(foreground);
+}
 listview {
-    columns: 5;
-    layout: vertical;
-    spacing: 100;
-    margin: 5% 7%;
+    padding:      2px 0px 0px ;
+    scrollbar:    true;
+    border-color: var(separatorcolor);
+    spacing:      2px ;
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
 }
-
 element {
-    orientation: vertical;
-    padding: 2% 0;
-    border-radius: 4;
+    padding: 1px ;
+    border:  0;
 }
-
-element normal.urgent, element alternate.urgent {
-    background-color: @urgent;
+element normal.normal {
+    background-color: var(normal-background);
+    text-color:       var(normal-foreground);
 }
-
-element normal.active, element alternate.active {
-    background-color: @background-alt;
-    color: @selected-text-color;
+element normal.urgent {
+    background-color: var(urgent-background);
+    text-color:       var(urgent-foreground);
 }
-
-element selected {
-    background-color: @background-alt;
-    color: @selected-text-color;
+element normal.active {
+    background-color: var(active-background);
+    text-color:       var(active-foreground);
 }
-
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
 element selected.urgent {
-    background-color: @urgent;
+    background-color: var(selected-urgent-background);
+    text-color:       var(selected-urgent-foreground);
 }
-
 element selected.active {
-    background-color: @background-alt;
-    color: @selected-text-color;
+    background-color: var(selected-active-background);
+    text-color:       var(selected-active-foreground);
 }
-
-element-icon {
-    size: 6%;
+element alternate.normal {
+    background-color: var(alternate-normal-background);
+    text-color:       var(alternate-normal-foreground);
 }
-
-element-text {
-    font: "SF Pro Display 14";
-    padding: 10 0 0 0;
+element alternate.urgent {
+    background-color: var(alternate-urgent-background);
+    text-color:       var(alternate-urgent-foreground);
+}
+element alternate.active {
+    background-color: var(alternate-active-background);
+    text-color:       var(alternate-active-foreground);
+}
+scrollbar {
+    width:        4px ;
+    padding:      0;
+    handle-width: 8px ;
+    border:       0;
+    handle-color: var(normal-foreground);
+}
+mode-switcher {
+    border-color: var(separatorcolor);
+    border:       2px dash 0px 0px ;
+}
+button {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+button selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+inputbar {
+    padding:    1px ;
+    spacing:    0px ;
+    text-color: var(normal-foreground);
+    children:   [ prompt,textbox-prompt-colon,entry,overlay,case-indicator ];
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+entry {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+prompt {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+textbox-prompt-colon {
+    margin:     0px 0.3000em 0.0000em 0.0000em ;
+    expand:     false;
+    str:        ":";
     text-color: inherit;
-    horizontal-align: 0.5;
+}
+error-message {
+    background-color: rgba ( 0, 0, 0, 0 % );
+    text-color:       var(normal-foreground);
 }

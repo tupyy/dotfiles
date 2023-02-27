@@ -1,5 +1,7 @@
 local wezterm = require("wezterm")
 
+local VIM_ICON = utf8.char(0xe62b)
+
 return {
     -- UI
     font_size = 16,
@@ -57,6 +59,11 @@ return {
                 confirm = false,
             }),
         },
+        -- scroll
+        { key = 'UpArrow',   mods = 'SHIFT', action = wezterm.action.ScrollByLine( -1) },
+        { key = 'DownArrow', mods = 'SHIFT', action = wezterm.action.ScrollByLine(1) },
+        -- search
+        { key = 'f',         mods = 'CTRL',  action = wezterm.action.Search 'CurrentSelectionOrEmptyString' },
         {
             key = "RightArrow",
             mods = "ALT",

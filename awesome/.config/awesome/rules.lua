@@ -79,7 +79,7 @@ function rules.create(clientkeys, clientbuttons)
         -- rofi rule 
         {
             rule_any = { name = { "rofi" } },
-            properties = { maximized = true, floating = true, titlebars_enabled = false },
+            properties = { maximized = false, floating = true, titlebars_enabled = true },
         },
 
 

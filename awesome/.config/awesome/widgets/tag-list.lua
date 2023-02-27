@@ -12,6 +12,7 @@
 
 local awful = require('awful')
 local wibox = require('wibox')
+local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
 local capi = { button = button }
 local clickable_container = require('widgets.clickable-container')
@@ -111,10 +112,6 @@ local function list_update(w, buttons, label, data, objects)
             ibm:set_margins(0)
         end
 
-        bgb.shape = args.shape
-        bgb.shape_border_width = args.shape_border_width
-        bgb.shape_border_color = args.shape_border_color
-
         w:add(bgb)
     end
 end
@@ -128,14 +125,6 @@ tag_list.create = function(s)
             awful.button({}, 1,
                 function(t)
                     t:view_only()
-                end
-            ),
-            awful.button({ modkey }, 1,
-                function(t)
-                    if client.focus then
-                        client.focus:move_to_tag(t)
-                        t:view_only()
-                    end
                 end
             ),
             awful.button({}, 3,

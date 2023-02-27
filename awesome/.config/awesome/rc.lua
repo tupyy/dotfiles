@@ -32,7 +32,7 @@ apps = {
     terminal = "wezterm",
     terminal2 = "alacritty --config-file /home/cosmin/.config/alacritty/alacritty_alt_font.yml",
     wezterm = "wezterm --always-new-process",
-    launcher = "rofi -normal-window -modi drun -show drun -theme " .. theme_config_dir .. "rofi.rasi",
+    launcher = "rofi -modi drun,run -show drun -sidebar-mode -columns 3 -theme " .. theme_config_dir .. "rofi.rasi",
     lock = "i3lock",
     filebrowser = "nautilus"
 }
