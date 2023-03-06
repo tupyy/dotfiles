@@ -24,13 +24,13 @@ local LIST_CONTAINERS_CMD = [[bash -c "podman container ls -a -s -n %s]]
 
 --- Utility function to show warning messages
 local function show_warning(message)
-    naughty.notify{
+    naughty.notify {
         preset = naughty.config.presets.critical,
         title = 'Docker Widget',
-        text = message}
+        text = message }
 end
 
-local popup = awful.popup{
+local popup = awful.popup {
     ontop = true,
     visible = false,
     shape = gears.shape.rounded_rect,
@@ -62,17 +62,20 @@ local docker_widget = wibox.widget {
 local parse_container = function(line)
     local name, id, image, status, how_long, size = line:match('(.*)::(.*)::(.*)::(%w*) (.*)::(.*)')
     local actual_status
-    if status == 'Up' and how_long:find('Paused') then actual_status = 'Paused'
-    else actual_status = status end
+    if status == 'Up' and how_long:find('Paused') then
+        actual_status = 'Paused'
+    else
+        actual_status = status
+    end
 
-    how_long = how_long:gsub('%s?%(.*%)%s?', '')
+    --    how_long = how_long:gsub('%s?%(.*%)%s?', '')
 
     local container = {
         name = name,
         id = id,
         image = image,
         status = actual_status,
-        how_long = how_long,
+        --      how_long = how_long,
         size = size,
         is_up = function() return status == 'Up' end,
         is_paused = function() return actual_status:find('Paused') end,
@@ -88,7 +91,6 @@ local status_to_icon_name = {
 }
 
 local function worker(user_args)
-
     local args = user_args or {}
 
     local icon = args.icon or ICONS_DIR .. 'docker.svg'
@@ -107,10 +109,9 @@ local function worker(user_args)
             return
         end
 
-        for i = 0, #rows do rows[i]=nil end
+        for i = 0, #rows do rows[i] = nil end
 
         for line in containers:gmatch("[^\r\n]+") do
-
             local container = parse_container(line)
 
 
@@ -148,7 +149,8 @@ local function worker(user_args)
                     old_cursor, old_wibox = wb.cursor, wb
                     wb.cursor = "hand1"
                     c:get_children_by_id("icon")[1]:set_opacity(1)
-                    c:get_children_by_id("icon")[1]:emit_signal('widget::redraw_needed')  end)
+                    c:get_children_by_id("icon")[1]:emit_signal('widget::redraw_needed')
+                end)
                 start_stop_button:connect_signal("mouse::leave", function(c)
                     c:set_bg('#00000000')
                     if old_wibox then
@@ -160,7 +162,7 @@ local function worker(user_args)
                 end)
 
                 start_stop_button:buttons(
-                    gears.table.join( awful.button({}, 1, function()
+                    gears.table.join(awful.button({}, 1, function()
                         local command
                         if container:is_up() then command = 'stop' else command = 'start' end
 
@@ -173,8 +175,8 @@ local function worker(user_args)
                                 function(stdout, stderr)
                                     rebuild_widget(stdout, stderr)
                                 end)
-                            end)
-                    end) ) )
+                        end)
+                    end)))
             else
                 start_stop_button = nil
             end
@@ -219,7 +221,7 @@ local function worker(user_args)
                 end)
 
                 pause_unpause_button:buttons(
-                    gears.table.join( awful.button({}, 1, function()
+                    gears.table.join(awful.button({}, 1, function()
                         local command
                         if container:is_paused() then command = 'unpause' else command = 'pause' end
 
@@ -232,8 +234,8 @@ local function worker(user_args)
                                 function(stdout, container_errors)
                                     rebuild_widget(stdout, container_errors)
                                 end)
-                            end)
-                    end) ) )
+                        end)
+                    end)))
             else
                 pause_unpause_button = nil
             end
@@ -257,14 +259,15 @@ local function worker(user_args)
                     widget = wibox.container.background
                 }
                 delete_button:buttons(
-                        gears.table.join( awful.button({}, 1, function()
-                            awful.spawn.easy_async('docker rm ' .. container['name'], function(_, rm_stderr)
-                                if rm_stderr ~= '' then show_warning(rm_stderr) end
-                                spawn.easy_async(string.format(LIST_CONTAINERS_CMD, number_of_containers),
-                                    function(lc_stdout, lc_stderr)
-                                        rebuild_widget(lc_stdout, lc_stderr) end)
-                                    end)
-                        end)))
+                    gears.table.join(awful.button({}, 1, function()
+                        awful.spawn.easy_async('docker rm ' .. container['name'], function(_, rm_stderr)
+                            if rm_stderr ~= '' then show_warning(rm_stderr) end
+                            spawn.easy_async(string.format(LIST_CONTAINERS_CMD, number_of_containers),
+                                function(lc_stdout, lc_stderr)
+                                    rebuild_widget(lc_stdout, lc_stderr)
+                                end)
+                        end)
+                    end)))
 
                 local old_cursor, old_wibox
                 delete_button:connect_signal("mouse::enter", function(c)
@@ -307,10 +310,10 @@ local function worker(user_args)
                                     markup = '<b>' .. container['name'] .. '</b>',
                                     widget = wibox.widget.textbox
                                 },
-                                {
-                                    text = container['how_long'],
-                                    widget = wibox.widget.textbox
-                                },
+                                -- {
+                                --     text = container['how_long'],
+                                --     widget = wibox.widget.textbox
+                                -- },
                                 forced_width = 280,
                                 layout = wibox.layout.fixed.vertical
                             },
@@ -351,19 +354,19 @@ local function worker(user_args)
 
     docker_widget:buttons(
         gears.table.join(
-                awful.button({}, 1, function()
-                    if popup.visible then
-                        docker_widget:set_bg('#00000000')
-                        popup.visible = not popup.visible
-                    else
-                        docker_widget:set_bg(beautiful.bg_focus)
-                        spawn.easy_async(string.format(LIST_CONTAINERS_CMD, number_of_containers),
-                            function(stdout, stderr)
-                                rebuild_widget(stdout, stderr)
-                                popup:move_next_to(mouse.current_widget_geometry)
-                            end)
-                    end
-                end)
+            awful.button({}, 1, function()
+                if popup.visible then
+                    docker_widget:set_bg('#00000000')
+                    popup.visible = not popup.visible
+                else
+                    docker_widget:set_bg(beautiful.bg_focus)
+                    spawn.easy_async(string.format(LIST_CONTAINERS_CMD, number_of_containers),
+                        function(stdout, stderr)
+                            rebuild_widget(stdout, stderr)
+                            popup:move_next_to(mouse.current_widget_geometry)
+                        end)
+                end
+            end)
         )
     )
 

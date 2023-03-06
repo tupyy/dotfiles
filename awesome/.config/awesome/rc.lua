@@ -21,6 +21,11 @@ local themes = {
     "mirage" -- 2
 }
 
+firefox_profiles = {
+    default = "/home/cosmin/.mozilla/firefox/ka3ujls6.default-release-1668496480962",
+    one_screen_profile = "/home/cosmin/.mozilla/firefox/9pade12h.cosmin-small-screen"
+}
+
 -- change this number to use the corresponding theme
 local theme = themes[1]
 local theme_config_dir = gears.filesystem.get_configuration_dir() .. "/configuration/" .. theme .. "/"
@@ -46,9 +51,7 @@ network_interfaces = {
 
 -- List of apps to run on start-up
 local run_on_start_up = {
-    "picom --experimental-backends --config " .. theme_config_dir .. "picom.conf",
-    "redshift",
-    "unclutter"
+    "conky"
 }
 
 
@@ -154,7 +157,6 @@ local executer = require("components/executer")
 executer.execute_commands({
     "xrandr --output DP-3-1-5 --rotate left",
     "xset r rate 200 20"
-    -- "/usr/bin/conky -c $HOME/.config/conky/conky.conf"
 })
 
 -- ===================================================================

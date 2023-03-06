@@ -114,6 +114,13 @@ local function get_terminal()
     return apps.terminal
 end
 
+local function get_browser()
+    if screen.count() == 1 then
+        return "firefox --profile " .. firefox_profiles.one_screen_profile
+    end
+    return "firefox --profile " .. firefox_profiles.default
+end
+
 -- ===================================================================
 -- Mouse bindings
 -- ===================================================================
@@ -175,6 +182,14 @@ keys.globalkeys = gears.table.join(
             awful.spawn(apps.launcher)
         end,
         { description = "application launcher", group = "launcher" }
+    ),
+
+    -- spanw firefox
+    awful.key({ modkey }, "b",
+        function()
+            awful.spawn(get_browser())
+        end,
+        { description = "firefox", group = "launcher" }
     ),
 
     -- =========================================
