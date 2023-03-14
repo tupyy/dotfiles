@@ -35,8 +35,8 @@ apps = {
     network_manager = "", -- recommended: nm-connection-editor
     power_manager = "", -- recommended: xfce4-power-manager
     terminal = "wezterm",
-    terminal2 = "alacritty --config-file /home/cosmin/.config/alacritty/alacritty_alt_font.yml",
-    wezterm = "wezterm --always-new-process",
+    terminal2 = "wezterm --config font_size=10",
+    floating_terminal = "alacritty",
     launcher = "rofi -modi drun,run -show drun -sidebar-mode -columns 3 -theme " .. theme_config_dir .. "rofi.rasi",
     lock = "i3lock",
     filebrowser = "nautilus"

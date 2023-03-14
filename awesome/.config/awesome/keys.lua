@@ -115,7 +115,7 @@ local function get_terminal()
 end
 
 local function get_browser()
-    if screen.count() == 1 then
+    if screen.count() == 1 or awful.screen.focused().index == 2 then
         return "firefox --profile " .. firefox_profiles.one_screen_profile
     end
     return "firefox --profile " .. firefox_profiles.default
@@ -172,9 +172,9 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey }, "w",
         function()
-            awful.spawn(wezterm)
+            awful.spawn(apps.floating_terminal)
         end,
-        { description = "open a terminal2", group = "launcher" }
+        { description = "open a floating terminal", group = "launcher" }
     ),
     -- launch rofi
     awful.key({ modkey }, "d",

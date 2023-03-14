@@ -27,7 +27,6 @@ end
 local spotify_widget = {}
 
 local function worker(user_args)
-
     local args = user_args or {}
 
     local play_icon = args.play_icon or os.getenv("HOME") .. '/.config/awesome/icons/spotify-player/play.png'
@@ -37,7 +36,7 @@ local function worker(user_args)
     local dim_opacity = args.dim_opacity or 0.2
     local max_length = args.max_length or 15
     local show_tooltip = args.show_tooltip == nil and true or args.show_tooltip
-    local timeout = args.timeout or 1
+    local timeout = args.timeout or 10
     local sp_bin = args.sp_bin or 'sp'
 
     local GET_SPOTIFY_STATUS_CMD = sp_bin .. ' status'
@@ -135,7 +134,7 @@ local function worker(user_args)
 
         local escaped = string.gsub(stdout, "&", '&amp;')
         local album, _, artist, title =
-        string.match(escaped, 'Album%s*(.*)\nAlbumArtist%s*(.*)\nArtist%s*(.*)\nTitle%s*(.*)\n')
+            string.match(escaped, 'Album%s*(.*)\nAlbumArtist%s*(.*)\nArtist%s*(.*)\nTitle%s*(.*)\n')
 
         if album ~= nil and title ~= nil and artist ~= nil then
             cur_artist = artist
@@ -184,9 +183,10 @@ local function worker(user_args)
     end
 
     return spotify_widget
-
 end
 
-return setmetatable(spotify_widget, { __call = function(_, ...)
-    return worker(...)
-end })
+return setmetatable(spotify_widget, {
+    __call = function(_, ...)
+        return worker(...)
+    end
+})

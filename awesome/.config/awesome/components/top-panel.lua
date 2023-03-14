@@ -63,9 +63,6 @@ top_panel.create = function(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.layout.margin(wibox.widget.systray(), dpi(5), dpi(5), dpi(5), dpi(5)),
             podman(),
-            spotify({
-                font = beautiful.font,
-            }),
             require("widgets.bluetooth"),
             require("widgets.network")(),
             require("widgets.battery"),

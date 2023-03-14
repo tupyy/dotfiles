@@ -14,8 +14,12 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 
 -- define screen height and width
-local screen_height = awful.screen.focused().geometry.height
-local screen_width = awful.screen.focused().geometry.width
+local screen_height = function()
+    return awful.screen.focused().geometry.height
+end
+local screen_width = function()
+    return awful.screen.focused().geometry.width
+end
 
 -- define module table
 local rules = {}
@@ -48,11 +52,10 @@ function rules.create(clientkeys, clientbuttons)
         {
             rule_any = {
                 class = {
-                    "Nm-connection-editor"
+                    "Nm-connection-editor",
                 },
                 role = {
                     "pop-up",
-                    "GtkFileChooserDialog"
                 },
                 type = {
                     "dialog"
@@ -65,30 +68,29 @@ function rules.create(clientkeys, clientbuttons)
         {
             rule_any = {
                 class = {
-                    "Firefox"
-                },
-            }, properties = { tag = "8" }
-        },
-        {
-            rule_any = {
-                class = {
                     "Slack"
                 },
             }, properties = { tag = "9" }
         },
-        -- rofi rule 
+        -- rofi rule
         {
             rule_any = { name = { "rofi" } },
             properties = { maximized = false, floating = true, titlebars_enabled = true },
         },
-
-
-        -- File chooser dialog
         {
-            rule_any = { role = { "GtkFileChooserDialog" } },
-            properties = { floating = true, width = screen_width * 0.55, height = screen_height * 0.65 }
+            rule_any = {
+                class = {
+                    "Alacritty",
+                },
+            },
+            properties = {
+                floating = true,
+                width = screen_width() * 1.95,
+                height = screen_height() * 0.75,
+                x = 4700,
+                y = 400,
+            }
         },
-
         -- Pavucontrol & Bluetooth Devices
         {
             rule_any = { class = { "Pavucontrol" }, name = { "Bluetooth Devices" } },
