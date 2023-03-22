@@ -15,8 +15,19 @@ local function execute_commands(commands)
   end
 end
 
+local function exec(cmd)
+    local result = io.popen(cmd)
+    if (result == nil) then
+        return "", error("invalid result")
+    end
+    local output = result:read("*all")
+    result:close()
+    return output, nil
+end
+
 local executer = {}
 
 executer.execute_commands = execute_commands
+executer.exec = exec
 
 return executer

@@ -18,7 +18,7 @@ local awful = require("awful")
 
 local themes = {
     "pastel", -- 1
-    "mirage" -- 2
+    "mirage"  -- 2
 }
 
 firefox_profiles = {
@@ -33,13 +33,18 @@ local theme_config_dir = gears.filesystem.get_configuration_dir() .. "/configura
 -- define default apps (global variable so other components can access it)
 apps = {
     network_manager = "", -- recommended: nm-connection-editor
-    power_manager = "", -- recommended: xfce4-power-manager
-    terminal = "wezterm",
-    terminal2 = "wezterm --config font_size=10",
+    power_manager = "",   -- recommended: xfce4-power-manager
+    terminal = function(font_size)
+        if font_size == nil then
+            return "wezterm"
+        end
+        return "wezterm" .. " --config font_size=" .. font_size
+    end,
     floating_terminal = "alacritty",
     launcher = "rofi -modi drun,run -show drun -sidebar-mode -columns 3 -theme " .. theme_config_dir .. "rofi.rasi",
     lock = "i3lock",
-    filebrowser = "nautilus"
+    filebrowser = "nautilus",
+    pavucontrol = "pavucontrol"
 }
 
 -- define wireless and ethernet interface names for the network widget

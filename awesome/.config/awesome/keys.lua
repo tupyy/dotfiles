@@ -11,19 +11,30 @@
 -- ===================================================================
 
 
-local awful = require("awful")
-local gears = require("gears")
-local naughty = require("naughty")
-local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
+local awful         = require("awful")
+local gears         = require("gears")
+local naughty       = require("naughty")
+local beautiful     = require("beautiful")
+local executer      = require("components.executer")
+local dpi           = beautiful.xresources.apply_dpi
 local spotify_shell = require("widgets.spotify-shell")
+local ssh_shell     = require("widgets.ssh-shell")
 
 -- Define mod keys
-local modkey = "Mod4"
-local altkey = "Mod1"
+local modkey        = "Mod4"
+local altkey        = "Mod1"
 
 -- define module table
-local keys = {}
+local keys          = {}
+
+-- return the number of connected screens
+local function count_screens()
+    local output = executer.exec("xrandr --listactivemonitors")
+    for v in output:gmatch "Monitors:%s(%d)" do
+        return tonumber(v)
+    end
+    return 1
+end
 
 -- local task_list = require("widgets/task_list-popup")
 -- ===================================================================
@@ -42,7 +53,7 @@ local function move_client(c, direction)
             c:geometry({
                 nil,
                 y = workarea.height + workarea.y - c:geometry().height - beautiful.useless_gap * 2 -
-                beautiful.border_width * 2,
+                    beautiful.border_width * 2,
                 nil,
                 nil
             })
@@ -51,7 +62,7 @@ local function move_client(c, direction)
         elseif direction == "right" then
             c:geometry({
                 x = workarea.width + workarea.x - c:geometry().width - beautiful.useless_gap * 2 -
-                beautiful.border_width * 2,
+                    beautiful.border_width * 2,
                 nil,
                 nil,
                 nil
@@ -60,7 +71,7 @@ local function move_client(c, direction)
         -- Otherwise swap the client in the tiled layout
     elseif awful.layout.get(mouse.screen) == awful.layout.suit.max then
         if direction == "up" or direction == "left" then
-            awful.client.swap.byidx( -1, c)
+            awful.client.swap.byidx(-1, c)
         elseif direction == "down" or direction == "right" then
             awful.client.swap.byidx(1, c)
         end
@@ -86,11 +97,11 @@ local function resize_client(c, direction)
         end
     else
         if direction == "up" then
-            awful.client.incwfact( -tiling_resize_factor)
+            awful.client.incwfact(-tiling_resize_factor)
         elseif direction == "down" then
             awful.client.incwfact(tiling_resize_factor)
         elseif direction == "left" then
-            awful.tag.incmwfact( -tiling_resize_factor)
+            awful.tag.incmwfact(-tiling_resize_factor)
         elseif direction == "right" then
             awful.tag.incmwfact(tiling_resize_factor)
         end
@@ -107,19 +118,24 @@ end
 -- get terminal depending on screen number
 -- on screen 2 spawn teminal with alt fonts
 local function get_terminal()
+    if count_screens() == 1 then
+        return apps.terminal(12)
+    end
     local screen = awful.screen.focused()
     if screen.index == 2 then
-        return apps.terminal2
+        return apps.terminal(10)
     end
-    return apps.terminal
+    return apps.terminal()
 end
 
 local function get_browser()
-    if screen.count() == 1 or awful.screen.focused().index == 2 then
+    if count_screens() == 1 or awful.screen.focused().index == 2 then
         return "firefox --profile " .. firefox_profiles.one_screen_profile
     end
     return "firefox --profile " .. firefox_profiles.default
 end
+
+
 
 -- ===================================================================
 -- Mouse bindings
@@ -190,6 +206,13 @@ keys.globalkeys = gears.table.join(
             awful.spawn(get_browser())
         end,
         { description = "firefox", group = "launcher" }
+    ),
+
+    awful.key({ modkey }, "i",
+        function()
+            awful.spawn(apps.pavucontrol)
+        end,
+        { description = "pavucontrol", group = "launcher" }
     ),
 
     -- =========================================
@@ -362,7 +385,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift" }, "s",
         function()
-            awful.screen.focus_relative( -1)
+            awful.screen.focus_relative(-1)
         end
     ),
 
@@ -379,7 +402,7 @@ keys.globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift" }, "Left",
         function()
-            awful.tag.viewidx( -1)
+            awful.tag.viewidx(-1)
         end,
         { description = "view previous tag", group = "tag" }
     ),
@@ -401,6 +424,17 @@ keys.globalkeys = gears.table.join(
             spotify_shell.launch()
         end,
         { description = "spotify shell", group = "music" }
+    ),
+
+
+    -- =========================================
+    -- SSH
+    -- =========================================
+    awful.key({ modkey }, "p",
+        function()
+            ssh_shell.launch()
+        end,
+        { description = "ssh shell", group = "music" }
     ),
 
     -- =========================================
@@ -461,7 +495,7 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey, altkey }, "l",
         function()
-            awful.tag.incnmaster( -1, nil, true)
+            awful.tag.incnmaster(-1, nil, true)
         end,
         { description = "decrease the number of master clients", group = "layout" }
     ),
@@ -473,7 +507,7 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey, altkey }, "Right",
         function()
-            awful.tag.incnmaster( -1, nil, true)
+            awful.tag.incnmaster(-1, nil, true)
         end,
         { description = "decrease the number of master clients", group = "layout" }
     ),
@@ -487,7 +521,7 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey, altkey }, "j",
         function()
-            awful.tag.incncol( -1, nil, true)
+            awful.tag.incncol(-1, nil, true)
         end,
         { description = "decrease the number of columns", group = "layout" }
     ),
@@ -499,7 +533,7 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey, altkey }, "Down",
         function()
-            awful.tag.incncol( -1, nil, true)
+            awful.tag.incncol(-1, nil, true)
         end,
         { description = "decrease the number of columns", group = "layout" }
     ),
@@ -517,7 +551,7 @@ keys.globalkeys = gears.table.join(
     ),
     awful.key({ modkey }, "minus",
         function()
-            awful.tag.incgap( -5, nil)
+            awful.tag.incgap(-5, nil)
         end,
         { description = "decrement gap size for the current tag", group = "gaps" }
     ),
@@ -536,7 +570,7 @@ keys.globalkeys = gears.table.join(
     -- select previous layout
     awful.key({ modkey, "Shift" }, "space",
         function()
-            awful.layout.inc( -1)
+            awful.layout.inc(-1)
         end,
         { description = "select previous", group = "layout" }
     ),

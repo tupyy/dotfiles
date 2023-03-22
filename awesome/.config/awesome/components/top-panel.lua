@@ -22,6 +22,7 @@ local tag_list = require("widgets.tag-list")
 local separator = require("widgets.horizontal-separator")
 local spotify = require("widgets.spotify")
 local podman = require("widgets.docker")
+local volume = require('widgets.volume-widget.volume')
 
 -- define module table
 local top_panel = {}

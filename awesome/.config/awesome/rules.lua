@@ -85,10 +85,10 @@ function rules.create(clientkeys, clientbuttons)
             },
             properties = {
                 floating = true,
-                width = screen_width() * 1.95,
+                width = screen_width() * 0.75,
                 height = screen_height() * 0.75,
-                x = 4700,
-                y = 400,
+                x = 4000,
+                y = 100,
             }
         },
         -- Pavucontrol & Bluetooth Devices
