@@ -60,7 +60,8 @@ function rules.create(clientkeys, clientbuttons)
                 type = {
                     "dialog"
                 }
-            }, properties = { floating = true }
+            },
+            properties = { floating = true }
         },
 
         -- "Switch to tag"
@@ -70,7 +71,8 @@ function rules.create(clientkeys, clientbuttons)
                 class = {
                     "Slack"
                 },
-            }, properties = { tag = "9" }
+            },
+            properties = { tag = "9" }
         },
         -- rofi rule
         {
@@ -85,16 +87,16 @@ function rules.create(clientkeys, clientbuttons)
             },
             properties = {
                 floating = true,
-                width = screen_width() * 0.75,
-                height = screen_height() * 0.75,
-                x = 4000,
-                y = 100,
+                width = 1800,
+                height = 1600,
+                x = 4800,
+                y = 300,
             }
         },
         -- Pavucontrol & Bluetooth Devices
         {
             rule_any = { class = { "Pavucontrol" }, name = { "Bluetooth Devices" } },
-            properties = { floating = true }
+            properties = { floating = false }
         },
     }
 end

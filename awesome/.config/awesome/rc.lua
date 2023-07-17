@@ -9,7 +9,7 @@
 -- Standard awesome libraries
 local gears = require("gears")
 local awful = require("awful")
-
+local machi = require("components.layout-machi")
 
 -- ===================================================================
 -- User Configuration
@@ -82,6 +82,7 @@ end
 -- Import theme
 local beautiful = require("beautiful")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/" .. theme .. "-theme.lua")
+beautiful.layout_machi = machi.get_icon()
 
 -- Initialize theme
 local selected_theme = require(theme)
@@ -98,9 +99,8 @@ awful.rules.rules = create_rules(keys.clientkeys, keys.clientbuttons)
 
 -- Define layouts
 awful.layout.layouts = {
+    machi.default_layout,
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    awful.layout.suit.max,
 }
 
 -- remove gaps if layout is set to max
@@ -168,4 +168,5 @@ executer.execute_commands({
 -- Garbage collection (allows for lower memory consumption)
 -- ===================================================================
 collectgarbage("setpause", 110)
+collectgarbage("setstepmul", 1000)
 collectgarbage("setstepmul", 1000)

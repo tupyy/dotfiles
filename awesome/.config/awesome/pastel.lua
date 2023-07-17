@@ -12,9 +12,10 @@
 
 local awful = require("awful")
 local gears = require("gears")
-local lain = require("lain")
+local machi = require("components.layout-machi")
 
 local pastel = {}
+local default_layout = awful.layout.suit.tile
 
 
 -- ===================================================================
@@ -24,12 +25,16 @@ local initial_layout = {
     {
         screen = 3,
         tag = 6,
-        layout = lain.layout.centerwork
+        layout = machi.default_layout,
+    },
+    {
+        screen = 3,
+        tag = 7,
+        layout = machi.default_layout,
     }
 }
 
 local function get_layout(screen_index, tag)
-    local default_layout = awful.layout.suit.tile
     for _, screen_layout in pairs(initial_layout) do
         if screen_layout.screen == screen_index and screen_layout.tag == tag then
             return screen_layout.layout
@@ -49,7 +54,6 @@ pastel.initialize = function()
     -- Set up each screen (add tags & panels)
     awful.screen.connect_for_each_screen(function(s)
         for i = 1, 9, 1 do
-
             awful.tag.add(i, {
                 icon = gears.filesystem.get_configuration_dir() .. "/icons/tags/pastel/" .. i .. ".png",
                 icon_only = false,

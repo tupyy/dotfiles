@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local VIM_ICON = utf8.char(0xe62b)
 
 return {
+    check_for_updates = false,
     -- UI
     font_size = 16,
     color_scheme = "gruvbox_material_dark_hard",
@@ -32,6 +33,13 @@ return {
         top = 0,
         bottom = 0,
     },
+    ssh_domains = {
+        {
+            name = 'fedorasrv',
+            remote_address = 'fedorasrv',
+            username = 'cosmin',
+        },
+    },
     -- Keys
 
     keys = {
@@ -60,7 +68,7 @@ return {
             }),
         },
         -- scroll
-        { key = 'UpArrow',   mods = 'SHIFT', action = wezterm.action.ScrollByLine( -1) },
+        { key = 'UpArrow',   mods = 'SHIFT', action = wezterm.action.ScrollByLine(-1) },
         { key = 'DownArrow', mods = 'SHIFT', action = wezterm.action.ScrollByLine(1) },
         -- search
         { key = 'f',         mods = 'CTRL',  action = wezterm.action.Search 'CurrentSelectionOrEmptyString' },

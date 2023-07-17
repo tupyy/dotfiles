@@ -19,6 +19,7 @@ local executer      = require("components.executer")
 local dpi           = beautiful.xresources.apply_dpi
 local spotify_shell = require("widgets.spotify-shell")
 local ssh_shell     = require("widgets.ssh-shell")
+local machi         = require("components.layout-machi")
 
 -- Define mod keys
 local modkey        = "Mod4"
@@ -118,7 +119,7 @@ end
 -- get terminal depending on screen number
 -- on screen 2 spawn teminal with alt fonts
 local function get_terminal()
-    if count_screens() == 1 then
+    if count_screens() <= 2 then
         return apps.terminal(12)
     end
     local screen = awful.screen.focused()
@@ -214,6 +215,15 @@ keys.globalkeys = gears.table.join(
         end,
         { description = "pavucontrol", group = "launcher" }
     ),
+
+    -- =========================================
+    -- Matchi
+    -- =========================================
+
+    awful.key({ modkey, }, ";", function() machi.default_editor.start_interactive() end,
+        { description = "edit the current layout if it is a machi layout", group = "layout" }),
+    awful.key({ modkey, }, ":", function() machi.switcher.start(client.focus) end,
+        { description = "switch between windows for a machi layout", group = "layout" }),
 
     -- =========================================
     -- FUNCTION KEYS
