@@ -9,19 +9,22 @@ if not mlsp_status_ok then
 end
 
 local servers = {
+    "ansiblels",
     "bashls",
     "dockerls",
-    "html",
     "gopls",
+    "html",
     "yamlls",
     "cssls",
     "tsserver",
     "terraformls",
-    "jsonls",
     "lua_ls",
     "ansiblels",
     "eslint",
-    "jdtls"
+    "jdtls",
+    "pylsp",
+    "serve_d",
+    "clangd",
 }
 
 local settings = {
@@ -80,6 +83,24 @@ for _, server in pairs(servers) do
         end
 
         rust_tools.setup(rust_opts)
+        goto continue
+    end
+
+    if server == "clangd" then
+        local root_files = {
+            '.clangd',
+            '.clang-tidy',
+            '.clang-format',
+            'compile_commands.json',
+            'compile_flags.txt',
+            'configure.ac', -- AutoTools
+        }
+        lspconfig.clangd.setup({
+            cmd = { "/home/cosmin/projects/esp/esp-clang/bin/clangd" },
+            filetypes = { "c", "cpp" },
+            on_attach = require("lsp.handlers").on_attach,
+            capabilities = require("lsp.handlers").capabilities,
+        })
         goto continue
     end
 

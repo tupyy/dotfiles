@@ -12,13 +12,11 @@ local enabled_list = {
     "javascript",
     "typescript",
     "tsx",
-    "graphql",
-    "prisma",
     "proto",
     "css",
     "scss",
-    "java",
-    "terraform"
+    "terraform",
+    "d"
 }
 
 configs.setup {
@@ -42,9 +40,11 @@ configs.setup {
         "scss",
         "yaml",
         "toml",
-        "query"
+        "query",
+        "sql",
+        "d"
     },
-    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+    sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "" }, -- List of parsers to ignore installing
     autopairs = {
         enable = true,
@@ -165,6 +165,15 @@ configs.setup {
             },
             swap_previous = {
                 ["<leader>,"] = "@parameter.inner",
+            },
+        },
+        lsp_interop = {
+            enable = true,
+            border = 'none',
+            floating_preview_opts = {},
+            peek_definition_code = {
+                ["<leader>df"] = "@function.outer",
+                ["<leader>dF"] = "@class.outer",
             },
         },
     },

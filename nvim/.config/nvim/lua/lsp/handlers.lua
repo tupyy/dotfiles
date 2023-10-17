@@ -7,7 +7,7 @@ if not status_cmp_ok then
     return
 end
 
-local status_ok, cmp_nvim_lsp = pcall(require,"cmp_nvim_lsp")
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
     return
 end
@@ -57,12 +57,12 @@ M.setup = function()
         local overrides = { border = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" } }
         -- border = { "┏", "━", "┓", "┃", "┛","━", "┗", "┃" },
         return vim.lsp.with(function(...)
-                local buf, winnr = handler(...)
-                if buf then
-                    -- use the same transparency effect from cmp
-                    vim.api.nvim_win_set_option(winnr, "winhighlight", "Normal:NormalFloat")
-                end
-            end, overrides)
+            local buf, winnr = handler(...)
+            if buf then
+                -- use the same transparency effect from cmp
+                vim.api.nvim_win_set_option(winnr, "winhighlight", "Normal:NormalFloat")
+            end
+        end, overrides)
     end
 
     -- Go-to definition in a split window
@@ -86,7 +86,7 @@ M.setup = function()
                 util.jump_to_location(result[1], 'utf-8', true)
 
                 if #result > 1 then
-                    util.setqflist(util.locations_to_items(result, 'utf-8'))
+                    vim.fn.setqflist(util.locations_to_items(result, 'utf-8'))
                     api.nvim_command("copen")
                     api.nvim_command("wincmd p")
                 end
