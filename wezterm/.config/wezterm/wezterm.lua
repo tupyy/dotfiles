@@ -6,7 +6,8 @@ return {
     check_for_updates = false,
     -- UI
     font_size = 16,
-    color_scheme = "gruvbox_material_dark_hard",
+    color_scheme = "Gruvbox light, hard (base16)",
+    -- color_scheme = "gruvbox_material_dark_hard",
     color_schemes = {
         ["gruvbox_material_dark_hard"] = {
             foreground = "#D4BE98",

@@ -16,7 +16,8 @@ local enabled_list = {
     "css",
     "scss",
     "terraform",
-    "d"
+    "d",
+"c"
 }
 
 configs.setup {
@@ -42,7 +43,8 @@ configs.setup {
         "toml",
         "query",
         "sql",
-        "d"
+        "d",
+        "c"
     },
     sync_install = false,    -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "" }, -- List of parsers to ignore installing

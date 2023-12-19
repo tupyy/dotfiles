@@ -36,6 +36,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'ghillb/cybu.nvim'
+Plug 'mrjones2014/smart-splits.nvim'
 
 -- Commentary
 Plug 'tpope/vim-commentary'
@@ -43,6 +44,7 @@ Plug 'tpope/vim-commentary'
 -- Git
 Plug 'tpope/vim-fugitive'
 Plug 'sindrets/diffview.nvim'
+Plug 'NeogitOrg/neogit'
 
 -- terminal
 Plug 'akinsho/toggleterm.nvim'
@@ -90,6 +92,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 -- diverse
 Plug 'kylechui/nvim-surround'
 Plug 'folke/which-key.nvim'
+
 -- auto pairs
 Plug 'hrsh7th/nvim-insx'
 
@@ -98,8 +101,8 @@ Plug 'jbyuki/one-small-step-for-vimkind'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'sebdah/vim-delve'
-Plug 'puremourning/vimspector'
 Plug 'ravenxrz/DAPInstall.nvim'
+Plug 'dreamsofcode-io/nvim-dap-go'
 
 -- experiment
 Plug 'MunifTanjim/nui.nvim'
@@ -112,6 +115,10 @@ Plug "mrbjarksen/neo-tree-diagnostics.nvim"
 
 -- Hare
 Plug 'https://git.sr.ht/~sircmpwn/hare.vim'
+
+-- Arduino
+Plug 'edKotinsky/Arduino.nvim'
+--Plug 'stevearc/vim-arduino'
 
 vim.call('plug#end')
 
@@ -135,3 +142,7 @@ require('plugins.barbar')
 require('plugins.trouble')
 require('plugins.dap-install')
 require('plugins.which-key')
+require('plugins.dap-go')
+require('smart-splits').setup({})
+require('plugins.arduino')
+require('plugins.neogit')

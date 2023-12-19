@@ -86,8 +86,8 @@ keymap("n", "gl", ":lua _LAZYGIT_TOGGLE()<CR>", opts)
 keymap("n", "<leader>bb", ":BufferPick<CR>", opts)
 keymap("n", "<leader>bp", ":BufferPin<CR>", opts)
 
--- vimspector
-keymap("n", "<leader>vr", ":VimspectorReset<CR>", opts)
+-- smart split resize mode
+keymap("n", "<leader>sm", ":SmartResizeMode<CR>", opts)
 
 -- trouble
 -- Lua
@@ -122,12 +122,18 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 })
 
 -- dap
+vim.keymap.set('n', '<leader>dt', function() require('dap-go').debug_test() end)
 vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
 vim.keymap.set('n', '<leader>do', function() require('dap').step_over() end)
 vim.keymap.set('n', '<leader>di', function() require('dap').step_into() end)
 vim.keymap.set('n', '<leader>ds', function() require('dap').step_out() end)
+
+-- breakpoints
 vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<leader>dB', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<leader>dbc', function() require('dap').clear_breakpoints() end)
+vim.keymap.set('n', '<leader>dbl', function() require('dap').list_breakpoints() end)
+
 vim.keymap.set('n', '<leader>dU', function() require('dapui').toggle() end)
 vim.keymap.set('n', '<leader>dC', function() require('dap').disconnect() end)
 vim.keymap.set('n', '<leader>lp',

@@ -25,6 +25,7 @@ local servers = {
     "pylsp",
     "serve_d",
     "clangd",
+    "arduino_language_server",
 }
 
 local settings = {
@@ -104,6 +105,15 @@ for _, server in pairs(servers) do
         goto continue
     end
 
+    if server == "arduino_languange_server" then
+        local arduino = require('arduino')
+        lspconfig.arduino_languange_server.setup({
+            on_attach = require("lsp.handlers").on_attach,
+            capabilities = require("lsp.handlers").capabilities,
+            on_new_config = arduino.on_new_config,
+        })
+    end
+
     -- local has_custom_opts, server_custom_opts = pcall(require, "lsp.settings." .. server)
     -- if has_custom_opts then
     -- 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
@@ -112,5 +122,6 @@ for _, server in pairs(servers) do
     lspconfig[server].setup(opts)
     ::continue::
 end
+
 
 require("lspconfig.ui.windows").default_options.border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" }
