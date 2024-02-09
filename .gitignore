@@ -1,7 +1,7 @@
 nvim/.config/nvim/bundle/*
 polybar/.config/polybar/polybar-spotify-controls
 nvim/.config/nvim/undodir/*
-nvim/.config/nvim/plugged/*
+nvim/plugged/*
 **/*.swp
 vifm/.config/vifm/vifminfo.json
 bash/.bash_export

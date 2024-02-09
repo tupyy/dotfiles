@@ -12,6 +12,10 @@ local hosts = {
         node = "rhel1:9100",
         name = "rhel1",
     },
+    [3] = {
+        node = "rhel2:9100",
+        name = "rhel2",
+    },
 }
 
 local function uptime_query(node)
@@ -53,7 +57,7 @@ local function temp_query(node)
 end
 
 local function create_curl_req(query)
-    return "curl -s --data-urlencode 'query=" .. query .. "' http://rhel1:7090/api/v1/query"
+    return "curl -s --data-urlencode 'query=" .. query .. "' https://prometheus.tls.tupangiu.ro/api/v1/query"
 end
 
 local x = 550;

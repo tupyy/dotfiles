@@ -99,7 +99,7 @@ local function format_conky_table(col_definition, data)
     return table_string
 end
 
-local pipelines_data = exec(create_curl_req("some token"))
+local pipelines_data = exec(create_curl_req(os.getenv("RH_ISSUE_TOKEN")))
 local data = extract(lunajson.decode(pipelines_data))
 
 local def = new_definition(550)

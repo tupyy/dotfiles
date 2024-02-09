@@ -5,6 +5,7 @@ if not status_ok then
     return
 end
 
+
 M.server_capabilities = function()
     local active_clients = vim.lsp.get_active_clients()
     local active_client_map = {}
@@ -31,6 +32,5 @@ end
 
 require("lsp.mason")
 require("lsp.handlers").setup()
---require("lsp.null-ls")
 --require("lsp.signature")
--- require("lsp.progress-notification")
+require("lsp.progress-notification")

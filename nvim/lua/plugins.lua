@@ -31,7 +31,7 @@ Plug "majutsushi/tagbar"
 Plug 'chentoast/marks.nvim'
 
 -- Tabs
-Plug 'noib3/nvim-cokeline'
+--Plug 'noib3/nvim-cokeline'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
@@ -62,8 +62,8 @@ Plug 'saadparwaiz1/cmp_luasnip' -- snipet compelention
 Plug 'hrsh7th/nvim-cmp'         -- completion plugin
 
 -- LSP
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+-- Plug 'williamboman/mason.nvim'
+-- Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/null-ls.nvim' -- formatters and linters
 Plug 'folke/neodev.nvim'               -- full doc of lua, signatures
