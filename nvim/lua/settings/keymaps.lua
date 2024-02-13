@@ -135,7 +135,7 @@ vim.keymap.set('n', '<leader>dbc', function() require('dap').clear_breakpoints()
 vim.keymap.set('n', '<leader>dbl', function() require('dap').list_breakpoints() end)
 
 vim.keymap.set('n', '<leader>dU', function() require('dapui').toggle() end)
-vim.keymap.set('n', '<leader>dC', function() require('dap').disconnect() end)
+vim.keymap.set('n', '<leader>dd', function() require('dap').disconnect() end)
 vim.keymap.set('n', '<leader>lp',
     function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set('n', '<leader>dr', function() require('dap').repl.open() end)

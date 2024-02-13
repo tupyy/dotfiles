@@ -103,6 +103,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'sebdah/vim-delve'
 Plug 'ravenxrz/DAPInstall.nvim'
 Plug 'dreamsofcode-io/nvim-dap-go'
+Plug 'mfussenegger/nvim-dap-python'
 
 -- experiment
 Plug 'MunifTanjim/nui.nvim'
@@ -143,6 +144,7 @@ require('plugins.trouble')
 require('plugins.dap-install')
 require('plugins.which-key')
 require('plugins.dap-go')
+require('plugins.dap-python')
 require('smart-splits').setup({})
 require('plugins.arduino')
 require('plugins.neogit')

@@ -24,4 +24,4 @@ dap_go.setup({
     -- to start the process in a random available port
     port = "${port}"
   },
-  })
+})
