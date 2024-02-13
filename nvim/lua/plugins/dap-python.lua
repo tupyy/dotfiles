@@ -9,6 +9,18 @@ local pythonPath = function()
         return '/usr/bin/python'
     end
 end
+local findAnsiBall = function(directory)
+    local i, t, popen = 0, {}, io.popen
+    local pfile = popen('ls -a "'..directory..'"')
+    for filename in pfile:lines() do
+        start, _ = string.find(filename, "AnsiballZ") 
+        if start == 1 then
+            return vim.loop.cwd() .. "/" .. filename
+        end
+    end
+    pfile:close()
+    return ""
+end
 local set_python_dap = function()
     require('dap-python').setup() -- earlier so setup the various defaults ready to be replaced
     dap.configurations.python = {
@@ -38,6 +50,17 @@ local set_python_dap = function()
             args = function()
                 local args_string = vim.fn.input('Arguments: ')
                 return vim.split(args_string, " +")
+            end;
+            console = "integratedTerminal",
+            pythonPath = pythonPath()
+        },
+        {
+            type = 'python';
+            request = 'launch';
+            name = 'Launch AnsibleBall';
+            program = findAnsiBall(vim.loop.cwd());
+            args = function()
+                return { "execute" }
             end;
             console = "integratedTerminal",
             pythonPath = pythonPath()
