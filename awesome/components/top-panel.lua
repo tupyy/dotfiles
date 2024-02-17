@@ -21,7 +21,6 @@ local task_list = require("widgets.task-list")
 local tag_list = require("widgets.tag-list")
 local separator = require("widgets.horizontal-separator")
 local spotify = require("widgets.spotify")
-local podman = require("widgets.docker")
 local volume = require('widgets.volume-widget.volume')
 
 -- define module table
@@ -63,7 +62,6 @@ top_panel.create = function(s)
         {
             layout = wibox.layout.fixed.horizontal,
             wibox.layout.margin(wibox.widget.systray(), dpi(5), dpi(5), dpi(5), dpi(5)),
-            podman(),
             require("widgets.bluetooth"),
             require("widgets.network")(),
             require("widgets.battery"),
