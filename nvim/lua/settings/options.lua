@@ -64,3 +64,4 @@ end
 local ignore = {}
 table.insert(ignore, { dir = "\\.git$" })
 vim.g["ctrlp_custom_ignore"] = ignore
+vim.lsp.set_log_level("debug")

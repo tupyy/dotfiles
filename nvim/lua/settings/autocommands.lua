@@ -18,3 +18,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.cmd.setlocal('expandtab')
     end
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile"}, {
+    pattern = { 
+        "playbook.yml",
+        "*/playbooks/*.yml", 
+        "*/playbooks/*.yaml", 
+        "*/roles/*/tasks/*.yml",
+        "*/roles/*/tasks/*.yaml",
+        "*/roles/*/handlers/*.yml",
+        "*/roles/*/handlers/*.yaml",
+    },
+    callback = function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        vim.bo[bufnr].filetype = "yaml.ansible"
+    end
+})

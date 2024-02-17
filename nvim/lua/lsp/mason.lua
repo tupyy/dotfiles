@@ -4,7 +4,7 @@ local servers = {
     "dockerls",
     "gopls",
     "html",
-    "yamlls",
+    --"yamlls",
     "cssls",
     "tsserver",
     "terraformls",
@@ -15,8 +15,18 @@ local servers = {
     "pylsp",
     "serve_d",
     "clangd",
-    "arduino_language_server",
 }
+
+local pythonPath = function()
+    local cwd = vim.loop.cwd()
+    if vim.fn.executable(cwd .. '/.venv/bin/pyls') == 1 then
+        return cwd .. '/.venv/bin/python'
+    elseif vim.fn.executable(cwd .. '/venv/bin/pyls') == 1 then
+        return cwd .. '/venv/bin/python'
+    else
+        return 'pyls'
+    end
+end
 
 local settings = {
     ui = {
@@ -105,19 +115,40 @@ for _, server in pairs(servers) do
         goto continue
     end
 
-    if server == "arduino_languange_server" then
-        local arduino = require('arduino')
-        lspconfig.arduino_languange_server.setup({
+    if server == "ansiblels" then
+        local util = require 'lspconfig.util'
+        lspconfig.ansiblels.setup({
             on_attach = require("lsp.handlers").on_attach,
             capabilities = require("lsp.handlers").capabilities,
-            on_new_config = arduino.on_new_config,
+            filetypes = { 'yaml.ansible' },
+            root_dir = util.root_pattern('ansible.cfg', '.ansible-lint'),
+            single_file_support = true,
+            cmd = { 'ansible-language-server', '--stdio' },
+             settings = {
+                ansible = {
+                  ansible = {
+                    path = "ansible",
+                    useFullyQualifiedCollectionNames = true
+                  },
+                  ansibleLint = {
+                    enabled = false,
+                    path = "ansible-lint"
+                  },
+                  executionEnvironment = {
+                    enabled = false
+                  },
+                  python = {
+                    interpreterPath = "python"
+                  },
+                  completion = {
+                      provideRedirectModules = true,
+                      provideModuleOptionAliases = true
+                  }
+                },
+            },
         })
+        goto continue
     end
-
-    -- local has_custom_opts, server_custom_opts = pcall(require, "lsp.settings." .. server)
-    -- if has_custom_opts then
-    -- 	opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
-    -- end
 
     lspconfig[server].setup(opts)
     ::continue::
