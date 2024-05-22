@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local VIM_ICON = utf8.char(0xe62b)
 
@@ -6,40 +7,20 @@ return {
     check_for_updates = false,
     -- UI
     font_size = 16,
-    color_scheme = "Gruvbox light, hard (base16)",
-    -- color_scheme = "gruvbox_material_dark_hard",
-    color_schemes = {
-        ["gruvbox_material_dark_hard"] = {
-            foreground = "#D4BE98",
-            background = "#1D2021",
-            cursor_bg = "#D4BE98",
-            cursor_border = "#D4BE98",
-            cursor_fg = "#1D2021",
-            selection_bg = "#D4BE98",
-            selection_fg = "#3C3836",
-
-            ansi = { "#1d2021", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-            brights = { "#eddeb5", "#ea6962", "#a9b665", "#d8a657", "#7daea3", "#d3869b", "#89b482", "#d4be98" },
-        },
-    },
+    font = wezterm.font('JetBrainsMono Nerd Font', { italic = false }),
+    color_scheme = "Dracula (base16)",
     colors = {
         split = "#444444",
     },
-    enable_scroll_bar = true,
-    tab_bar_at_bottom = true,
+    enable_scroll_bar = false,
+    hide_tab_bar_if_only_one_tab = true,
+    window_decorations = "TITLE",
     window_background_opacity = 1,
     window_padding = {
         left = 0,
         right = 0,
         top = 0,
         bottom = 0,
-    },
-    ssh_domains = {
-        {
-            name = 'fedorasrv',
-            remote_address = 'fedorasrv',
-            username = 'cosmin',
-        },
     },
     -- Keys
 
@@ -99,4 +80,26 @@ return {
             action = wezterm.action.SpawnTab("CurrentPaneDomain"),
         }
     },
+    key_tables = {
+        search_mode = {
+            { key = 'Enter',  mods = 'NONE', action = act.CopyMode 'PriorMatch' },
+            { key = 'Escape', mods = 'NONE', action = act.CopyMode 'Close' },
+            { key = 'n',      mods = 'CTRL', action = act.CopyMode 'NextMatch' },
+            { key = 'p',      mods = 'CTRL', action = act.CopyMode 'PriorMatch' },
+            { key = 'r',      mods = 'CTRL', action = act.CopyMode 'CycleMatchType' },
+            { key = 'u',      mods = 'CTRL', action = act.CopyMode 'ClearPattern' },
+            {
+                key = 'PageUp',
+                mods = 'NONE',
+                action = act.CopyMode 'PriorMatchPage',
+            },
+            {
+                key = 'PageDown',
+                mods = 'NONE',
+                action = act.CopyMode 'NextMatchPage',
+            },
+            { key = 'UpArrow',   mods = 'NONE', action = act.CopyMode 'PriorMatch' },
+            { key = 'DownArrow', mods = 'NONE', action = act.CopyMode 'NextMatch' },
+        },
+    }
 }

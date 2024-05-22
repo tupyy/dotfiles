@@ -36,9 +36,9 @@ apps = {
     power_manager = "",   -- recommended: xfce4-power-manager
     terminal = function(font_size)
         if font_size == nil then
-            return "alacritty"
+            return "wezterm"
         end
-        return "alacritty" .. " --option font.size=" .. font_size
+        return "wezterm" .. " --config font_size=" .. font_size
     end,
     floating_terminal = "alacritty",
     launcher = "rofi -modi drun,run -show drun -sidebar-mode -columns 3 -theme " .. theme_config_dir .. "rofi.rasi",

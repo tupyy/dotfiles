@@ -30,7 +30,7 @@ local columns_def = {
     ports = {
         key = "ports",
         header = "Ports",
-        offset = 400,
+        offset = 500,
         transform = function(value)
             if (value == nil) then
                 return ""

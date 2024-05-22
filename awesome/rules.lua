@@ -79,20 +79,20 @@ function rules.create(clientkeys, clientbuttons)
             rule_any = { name = { "rofi" } },
             properties = { maximized = false, floating = true, titlebars_enabled = true },
         },
-        -- {
-        --     rule_any = {
-        --         class = {
-        --             "Alacritty",
-        --         },
-        --     },
-        --     properties = {
-        --         floating = true,
-        --         width = 1800,
-        --         height = 1600,
-        --         x = 4800,
-        --         y = 300,
-        --     }
-        -- },
+        {
+            rule_any = {
+                class = {
+                    "Alacritty",
+                },
+            },
+            properties = {
+                floating = true,
+                width = 2500,
+                height = 1600,
+                x = 4600,
+                y = 300,
+            }
+        },
         -- Pavucontrol & Bluetooth Devices
         {
             rule_any = { class = { "Pavucontrol" }, name = { "Bluetooth Devices" } },

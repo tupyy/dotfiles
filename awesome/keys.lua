@@ -120,11 +120,11 @@ end
 -- on screen 2 spawn teminal with alt fonts
 local function get_terminal()
     if count_screens() <= 2 then
-        return apps.terminal(12)
+        return apps.terminal(14)
     end
     local screen = awful.screen.focused()
     if screen.index == 2 then
-        return apps.terminal(10)
+        return apps.terminal(11)
     end
     return apps.terminal()
 end

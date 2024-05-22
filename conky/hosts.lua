@@ -5,16 +5,28 @@ local lunajson = require 'lunajson'
 
 local hosts = {
     [1] = {
-        node = "fedorasrv:9100",
-        name = "fedorasrv",
-    },
-    [2] = {
-        node = "rhel1:9100",
+        node = "rhel1.tls.tupangiu.ro:9100",
         name = "rhel1",
     },
-    [3] = {
-        node = "rhel2:9100",
+    [2] = {
+        node = "rhel2.tls.tupangiu.ro:9100",
         name = "rhel2",
+    },
+    [3] = {
+        node = "rhel3.tls.tupangiu.ro:9100",
+        name = "rhel3",
+    },
+    [4] = {
+        node = "photoview.tls.tupangiu.ro:9100",
+        name = "photoview",
+    },
+    [5] = {
+        node = "git.tls.tupangiu.ro:9100",
+        name = "forgejo",
+    },
+    [6] = {
+        node = "woodpecker.tls.tupangiu.ro:9100",
+        name = "woodpecker",
     },
 }
 
